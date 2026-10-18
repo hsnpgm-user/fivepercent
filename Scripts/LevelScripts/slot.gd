@@ -8,6 +8,7 @@ var slot_index: int = -1
 var slot_type: String = ""
 var slot_item_data: Dictionary = {}
 
+@onready var extra_background: ColorRect = $BackgroundExtra if has_node("BackgroundExtra") else null
 @onready var tooltip_label: Label = $TooltipLabel if has_node("TooltipLabel") else null
 
 @onready var hover_audio: AudioStreamPlayer2D = $Hover
@@ -81,6 +82,8 @@ func _gui_input(event):
 
 func remove_background():
 	add_theme_stylebox_override("panel", StyleBoxEmpty.new())
+	if extra_background:
+		extra_background.visible = false
 	
 func get_item_display_name(item_id: String) -> String:
 	match item_id:

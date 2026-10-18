@@ -1,6 +1,16 @@
 [gd_scene format=3 uid="uid://c2vkickayu1uh"]
 
 [ext_resource type="Script" uid="uid://j1i70b0dx8ij" path="res://Scripts/LevelScripts/menu.gd" id="1_xhh6f"]
+[ext_resource type="AudioStream" uid="uid://cgtvj268mdt4c" path="res://Assets/Audio/Ambient/menu.mp3" id="2_xhh6f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ke5xo"]
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_1rerr"]
+font_size = 33
+
+[sub_resource type="LabelSettings" id="LabelSettings_p16ah"]
+font_size = 21
 
 [node name="Menu" type="Control" unique_id=459827026]
 layout_mode = 3
@@ -11,15 +21,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xhh6f")
 
+[node name="MenuMusic" type="AudioStreamPlayer2D" parent="." unique_id=1126277627]
+stream = ExtResource("2_xhh6f")
+autoplay = true
+parameters/looping = true
+
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1743568468]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 182.0
-offset_top = -205.0
+offset_top = -278.0
 offset_right = 532.0
-offset_bottom = 310.0
+offset_bottom = 237.0
 grow_vertical = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_right = 30
@@ -50,5 +65,125 @@ text = "Credits"
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 text = "Exit"
+
+[node name="OptionsPanel" type="Control" parent="." unique_id=1330483388]
+visible = false
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1020.0
+offset_top = -240.0
+offset_right = -520.0
+offset_bottom = 260.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="OptionsPanel" unique_id=1568412630]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.14117648, 0.14117648, 0.14117648, 0.49411765)
+
+[node name="VolumeSlider" type="HSlider" parent="OptionsPanel" unique_id=2030732152]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = 148.0
+offset_top = 173.0
+offset_right = 348.0
+offset_bottom = 189.0
+value = 50.0
+
+[node name="BackButton" type="Button" parent="OptionsPanel" unique_id=1945919274]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 450.0
+offset_right = 130.0
+offset_bottom = 480.0
+text = "Back"
+
+[node name="Label" type="Label" parent="OptionsPanel" unique_id=1059902434]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 106.0
+offset_right = 321.0
+offset_bottom = 134.0
+text = "Master Volume"
+label_settings = SubResource("LabelSettings_ke5xo")
+
+[node name="CreditsPanel" type="Control" parent="." unique_id=569087774]
+visible = false
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1020.0
+offset_top = -240.0
+offset_right = -520.0
+offset_bottom = 260.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CreditsPanel" unique_id=1836335138]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.06879827, 0.06879828, 0.06879828, 0.4)
+
+[node name="BackButton" type="Button" parent="CreditsPanel" unique_id=2004051553]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 450.0
+offset_right = 130.0
+offset_bottom = 480.0
+text = "Back
+"
+
+[node name="Label" type="Label" parent="CreditsPanel" unique_id=335988483]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 53.0
+offset_right = 374.0
+offset_bottom = 99.0
+text = "CIVIL GAMEJAM"
+label_settings = SubResource("LabelSettings_1rerr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CreditsPanel" unique_id=1222357651]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 204.0
+offset_right = 408.0
+offset_bottom = 234.0
+text = "Aziza BEGENCOVA  -  ART"
+label_settings = SubResource("LabelSettings_p16ah")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CreditsPanel" unique_id=1203183201]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 297.0
+offset_right = 398.0
+offset_bottom = 327.0
+text = "Hasan TOP  -  DEVELOPMENT"
+label_settings = SubResource("LabelSettings_p16ah")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

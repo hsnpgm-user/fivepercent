@@ -20,9 +20,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_12ej0")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=159493366]
+[node name="BackgroundExtra" type="ColorRect" parent="." unique_id=159493366]
 layout_mode = 2
-color = Color(0.2, 0.2, 0.2, 0)
+color = Color(0.12941177, 0.12941177, 0.12941177, 0)
 
 [node name="Icon" type="TextureRect" parent="." unique_id=372462125]
 custom_minimum_size = Vector2(148, 107)

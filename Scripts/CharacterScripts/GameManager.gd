@@ -1,5 +1,7 @@
 extends Node
 
+var master_volume: float = 1 # Varsayılan %100 (normal ses)
+
 enum DisasterType {Earthquake, Flood, Avalanche, Fire}
 var current_disaster: DisasterType = DisasterType.Earthquake
 

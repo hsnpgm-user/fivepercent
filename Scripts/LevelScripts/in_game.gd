@@ -254,13 +254,18 @@ func _on_slot_clicked(slot_type: String, index: int) -> void:
 	
 	play_item_sound(item_id)
 
-	# 1. Temel İhtiyaç Giderme (Su sadece susuzluk, konserve sadece açlık doldurur!)
+	# 1. Temel İhtiyaç Giderme (Su / Konserve)
 	if item.has("thirst_restore" or item_id == "water"):
 		GameManager.player_stats["thirst"] = min(100, GameManager.player_stats["thirst"] + item["thirst_restore"])
 	if item.has("hunger_restore" or item_id == "con_foods"):
 		GameManager.player_stats["hunger"] = min(100, GameManager.player_stats["hunger"] + item["hunger_restore"])
 
-	# 2. Afet Matrisi ve Eşya Özel Etkileri
+	# --- KRİZ KONTROLÜ ÖNCE YAPILIYOR ---
+	var is_correct_item_for_event = false
+	if event_active and active_event.has("item") and item_id == active_event["item"]:
+		is_correct_item_for_event = true
+
+	# 2. Afet Matrisi ve Eşya Özel Etkileri (Doğru eşyadaysa debuff'lar engellenir)
 	for proto in GameManager.all_item_pool:
 		if proto["item_id"] == item_id and proto.has("effects"):
 			var disaster_effects = proto["effects"]
@@ -269,32 +274,27 @@ func _on_slot_clicked(slot_type: String, index: int) -> void:
 				var target_stat = effect_data["stat"] 
 				var val = effect_data["val"]
 				
-				# KURAL: Can (health) değerini artıran tek eşya MEDKIT'tir.
+				if is_correct_item_for_event and val < 0:
+					continue # Kriz anında doğru eşyaysa olumsuz debuff'ı yok sayar!
+				
 				if target_stat == "health":
 					if item_id == "med_kit":
 						if event_active:
-							# Kriz anında kullanılırsa yüksek telafi (18 can)
 							GameManager.player_stats["health"] = min(100, GameManager.player_stats["health"] + 18)
 						else:
-							# Kriz dışında kullanılırsa çok az can tazeleme (5 can)
 							GameManager.player_stats["health"] = min(100, GameManager.player_stats["health"] + 5)
 					else:
-						# Diğer eşyaların cana olan olumsuz etkileri (yanlış eşya cezaları) aynen çalışır
 						if val < 0:
 							GameManager.player_stats["health"] = max(0, GameManager.player_stats["health"] + val)
 				else:
-					# Isı veya diğer stat değişimleri
 					GameManager.player_stats[target_stat] = clamp(GameManager.player_stats[target_stat] + val, 0, 100)
 
-	# 3. Kriz Durumu Kontrolü
-	var is_correct_item_for_event = false
-	if event_active and active_event.has("item") and item_id == active_event["item"]:
+	# 3. Kriz Durumunu Tamamlama
+	if is_correct_item_for_event:
 		event_active = false
 		successful_interventions += 1
 		GameManager.survival_points += 100
-		is_correct_item_for_event = true
 		
-		# Eğer doğru eşya Medkit ise kriz çözüldüğünde ekstra can telafisi verelim
 		if item_id == "med_kit":
 			GameManager.player_stats["health"] = min(100, GameManager.player_stats["health"] + 15)
 	
@@ -308,9 +308,6 @@ func _on_slot_clicked(slot_type: String, index: int) -> void:
 		event_label.text = ""
 	else:
 		situation_label.text = "📖 " + story_text
-		var tween_label = create_tween()
-		tween_label.tween_interval(5.0)
-		tween_label.tween_callback(func(): situation_label.text = "")
 	
 	GameManager.bag_slots[index] = {}
 	draw_ingame_bag()
