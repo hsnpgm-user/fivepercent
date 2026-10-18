@@ -1,12 +1,42 @@
 [gd_scene format=3 uid="uid://ghist70wd33d"]
 
 [ext_resource type="Script" uid="uid://bbxpmgdvugiog" path="res://Scripts/LevelScripts/upgrade_screen.gd" id="1_o5sws"]
+[ext_resource type="Texture2D" uid="uid://dbnajxiy1kpqk" path="res://Assets/UI/upgrade screen.png" id="2_l5wmx"]
+[ext_resource type="Texture2D" uid="uid://cmtb5wj7o4s2n" path="res://Assets/UI/upgrade screen_bilgi.png" id="2_l53bo"]
+[ext_resource type="Texture2D" uid="uid://b7f7cdd6tn4vm" path="res://Assets/UI/upgrade screen_Upgrade button.png" id="3_l5wmx"]
+[ext_resource type="Texture2D" uid="uid://dd2lpjveuxnop" path="res://Assets/UI/upgrade screen_Upgrade button clicked.png" id="4_2oxtv"]
+[ext_resource type="Texture2D" uid="uid://byfp8rcbnqf77" path="res://Assets/UI/canta.png" id="4_gmf5r"]
+[ext_resource type="Texture2D" uid="uid://dep1hwvledo3n" path="res://Assets/UI/upgrade screen_next button.png" id="5_gmf5r"]
+[ext_resource type="Texture2D" uid="uid://bg5i5av2m7iko" path="res://Assets/UI/upgrade screen_next button clicked.png" id="6_kjkj4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p16ah"]
 font_size = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_g1a74"]
-font_size = 49
+font_size = 60
+outline_size = 4
+shadow_size = 26
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qs4b4"]
+texture = ExtResource("3_l5wmx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0tqgd"]
+texture = ExtResource("4_2oxtv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7qvly"]
+texture = ExtResource("3_l5wmx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l5wmx"]
+texture = ExtResource("4_2oxtv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_16bix"]
+texture = ExtResource("5_gmf5r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rl3tg"]
+texture = ExtResource("6_kjkj4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rfqti"]
+texture = ExtResource("5_gmf5r")
 
 [node name="UpgradeScreen" type="Control" unique_id=770201661]
 layout_mode = 3
@@ -16,6 +46,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_o5sws")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=530059466]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_l5wmx")
+expand_mode = 2
 
 [node name="Label" type="Label" parent="." unique_id=978730927]
 layout_mode = 1
@@ -29,71 +69,98 @@ offset_bottom = 164.0
 grow_horizontal = 2
 label_settings = SubResource("LabelSettings_p16ah")
 
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=632632742]
+custom_maximum_size = Vector2(1000, 800)
+layout_mode = 0
+offset_left = 887.0
+offset_top = 149.0
+offset_right = 1887.0
+offset_bottom = 949.0
+texture = ExtResource("2_l53bo")
+
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1052221184]
-custom_minimum_size = Vector2(1000, 800)
+custom_minimum_size = Vector2(400, 600)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -500.0
-offset_top = -529.0
-offset_right = 500.0
-offset_bottom = 535.0
+offset_left = 566.0001
+offset_top = -309.0
+offset_right = 966.0001
+offset_bottom = 291.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
+scale = Vector2(0.73989284, 0.73989284)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1153734996]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_constants/separation = 74
+theme_override_constants/separation = 80
 
-[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1210455597]
+[node name="TotalScore" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1742429498]
 layout_mode = 2
-text = "Upgrade"
+text = "aaaa"
 label_settings = SubResource("LabelSettings_g1a74")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TotalScore" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1742429498]
-layout_mode = 2
-text = "Total Score: "
-label_settings = SubResource("LabelSettings_g1a74")
-
 [node name="CapasityInfo" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1677639260]
 layout_mode = 2
-text = "Bag Capasity: 3/8 Slots"
+text = "aaaa"
 label_settings = SubResource("LabelSettings_g1a74")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Price" type="Label" parent="MarginContainer/VBoxContainer" unique_id=626806131]
 layout_mode = 2
-text = "Upgrade Price: 300"
+text = "aaaa"
 label_settings = SubResource("LabelSettings_g1a74")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="StatusMsg" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1629961906]
-layout_mode = 2
+[node name="Canta" type="Sprite2D" parent="MarginContainer" unique_id=501850896]
+position = Vector2(-696.04694, 733.8901)
+scale = Vector2(1.3852142, 1.3852142)
+texture = ExtResource("4_gmf5r")
+
+[node name="StatusMsg" type="Label" parent="." unique_id=1629961906]
+layout_mode = 0
+offset_left = 1354.0
+offset_top = 576.0
+offset_right = 1355.0
+offset_bottom = 618.0
 label_settings = SubResource("LabelSettings_g1a74")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="UpgradeButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=776314890]
+[node name="UpgradeButton" type="Button" parent="." unique_id=776314890]
 custom_minimum_size = Vector2(500, 100)
-layout_mode = 2
+layout_mode = 0
+offset_left = 1129.0
+offset_top = 633.0
+offset_right = 1629.0
+offset_bottom = 733.0
 size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 41
-text = "Upgrade Bag (+1 Slot)"
+theme_override_styles/normal = SubResource("StyleBoxTexture_qs4b4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0tqgd")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7qvly")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_l5wmx")
 
-[node name="NextButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1521432626]
-custom_minimum_size = Vector2(250, 100)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
+[node name="NextButton" type="Button" parent="." unique_id=1521432626]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 0
+offset_left = 1282.0
+offset_top = 776.0
+offset_right = 1432.0
+offset_bottom = 876.0
 theme_override_font_sizes/font_size = 41
-text = "Next"
+theme_override_styles/normal = SubResource("StyleBoxTexture_16bix")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rl3tg")
+theme_override_styles/hover = SubResource("StyleBoxTexture_rfqti")
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/UpgradeButton" to="." method="_on_next_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="UpgradeButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]

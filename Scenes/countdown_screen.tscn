@@ -1,20 +1,33 @@
 [gd_scene format=3 uid="uid://b2oiwur00m8ai"]
 
 [ext_resource type="Script" uid="uid://gvqx3niosr41" path="res://Scripts/LevelScripts/countdown_screen.gd" id="1_n0stl"]
+[ext_resource type="Texture2D" uid="uid://bce4fxv2nigw4" path="res://Assets/UI/1. geri sayım ekranı.png" id="2_4cp1u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n0stl"]
-font_size = 90
+font_size = 200
+outline_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_4cp1u"]
 font_size = 57
-
-[sub_resource type="LabelSettings" id="LabelSettings_ltx6v"]
-font_size = 77
 
 [node name="CountdownScreen" type="Control" unique_id=1474994869]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_n0stl")
+
+[node name="BackGround" type="TextureRect" parent="." unique_id=1869010637]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1921.2086
+offset_bottom = 1081.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4cp1u")
+expand_mode = 1
 
 [node name="MainCountdown" type="Timer" parent="." unique_id=35980524]
 wait_time = 3.0
@@ -25,31 +38,18 @@ autostart = true
 wait_time = 0.5
 one_shot = true
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=2118487008]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.28118682, 0.28118688, 0.28118682, 1)
-
 [node name="BeforeCountdown" type="Control" parent="." unique_id=830785750]
 anchors_preset = 0
-offset_right = 40.0
+offset_left = 47.0
+offset_right = 87.0
 offset_bottom = 40.0
-
-[node name="ColorRect2" type="ColorRect" parent="BeforeCountdown" unique_id=949489777]
-layout_mode = 0
-offset_left = 742.0
-offset_top = 332.0
-offset_right = 1142.0
-offset_bottom = 732.0
-color = Color(0.6824024, 0.42804864, 0.24909112, 1)
 
 [node name="TimeOnScreen" type="Label" parent="BeforeCountdown" unique_id=1442912081]
 layout_mode = 0
-offset_left = 819.0
-offset_top = 415.0
-offset_right = 1069.0
-offset_bottom = 665.0
+offset_left = 809.0
+offset_top = 402.0
+offset_right = 1059.0
+offset_bottom = 675.0
 text = "3"
 label_settings = SubResource("LabelSettings_n0stl")
 horizontal_alignment = 1
@@ -81,16 +81,5 @@ offset_right = 1088.0
 offset_bottom = 994.0
 text = "Avalanche"
 label_settings = SubResource("LabelSettings_4cp1u")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label" type="Label" parent="." unique_id=987607242]
-layout_mode = 0
-offset_left = 610.0
-offset_top = 97.0
-offset_right = 1279.0
-offset_bottom = 203.0
-text = "Countdown Scene"
-label_settings = SubResource("LabelSettings_ltx6v")
 horizontal_alignment = 1
 vertical_alignment = 1

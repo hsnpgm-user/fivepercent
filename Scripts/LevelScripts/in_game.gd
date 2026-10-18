@@ -10,7 +10,7 @@ const LATE_PHASE_START: float = 60
 @onready var disaster_audio_player: AudioStreamPlayer2D = $DisasterAudioPlayer
 
 @onready var blur: ColorRect = $UI/Blur
-@onready var situation_label: Label = $UI/SituationLabel
+@onready var situation_label: Label = $UI/SituationTexture/SituationLabel
 @onready var end_game_screen: Control = $EndGameScreen
 @onready var summary_title_label: Label = $EndGameScreen/MarginContainer/VBoxContainer/Label
 @onready var summary_label_1: Label = $EndGameScreen/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Label
@@ -25,9 +25,12 @@ const LATE_PHASE_START: float = 60
 @onready var hunger_bar: TextureProgressBar = $UI/HungerBar
 @onready var temp_bar: TextureProgressBar = $UI/TempBar
 
+@onready var event_tex: TextureRect = $UI/EventTexture
+@onready var sit_tex: TextureRect = $UI/SituationTexture
+
 @onready var character: Sprite2D = $UI/Character
 @onready var background: TextureRect = $UI/Background
-@onready var event_label: Label = $UI/EventLabel
+@onready var event_label: Label = $UI/EventTexture/EventLabel
 @onready var event_timer: Timer = $EventTimer
 @onready var in_game_time: Timer = $InGameTime
 @onready var custom_timer: Timer = $CustomTimer
@@ -118,7 +121,8 @@ func _on_stats_tick():
 	if GameManager.player_stats["thirst"] == 0 or GameManager.player_stats["hunger"] == 0 or GameManager.player_stats["temperature"] == 0:
 		GameManager.player_stats["health"] = max(0, GameManager.player_stats["health"] - 10)
 		if not event_active:
-			event_label.text = "⚠️ Vital signs critical!"
+			event_label.text = "Vital signs critical!"
+			event_label.visible = true
 	
 	update_radial_stats_ui()
 
@@ -149,16 +153,19 @@ func _on_sparse_event_trigger():
 	var chosen_crisis = possible_crises[0]
 	
 	event_active = true
-	event_label.text = "🚨 " + chosen_crisis["msg"]
+	event_label.text = chosen_crisis["msg"]
+	event_label.visible = true
 	
 	await get_tree().create_timer(6.0).timeout
 	if event_active:
 		event_active = false
 		GameManager.player_stats["health"] = max(0, GameManager.player_stats["health"] - 10)
-		event_label.text = "❌ Condition worsened!"
+		event_label.text = "Condition worsened!"
+		event_label.visible = true
 		update_radial_stats_ui()
 		await get_tree().create_timer(2.0).timeout
 		event_label.text = ""
+		event_label.visible = false
 
 # ---------- Puan ----------
 
@@ -209,6 +216,7 @@ func bad_ending() -> void:
 	
 	if event_label:
 		event_label.text = ""
+		event_label.visible = false
 	
 	var advice = "Rough run! Poor preparation or wrong items cost you your life."
 	show_game_summary(false, "You Tried Your Best!", advice)
@@ -304,10 +312,13 @@ func _on_slot_clicked(slot_type: String, index: int) -> void:
 	var story_text = get_item_narrative(item_id)
 	
 	if is_correct_item_for_event:
-		situation_label.text = "✅ Crisis Resolved! (+100 Points)\n📖 " + story_text
+		situation_label.text = "Crisis Resolved! (+100 Points)\n " + story_text
+		sit_tex.visible = true
 		event_label.text = ""
+		event_label.visible = false
 	else:
-		situation_label.text = "📖 " + story_text
+		situation_label.text = story_text
+		sit_tex.visible = true
 	
 	GameManager.bag_slots[index] = {}
 	draw_ingame_bag()
@@ -316,6 +327,7 @@ func _on_slot_clicked(slot_type: String, index: int) -> void:
 	
 	if not event_active and not game_over:
 		situation_label.text = ""
+		sit_tex.visible = false
 
 
 # ---------- Kriz sistemi ----------
@@ -344,7 +356,8 @@ func _on_event_timer_timeout() -> void:
 	event_serial += 1
 	var my_serial := event_serial
 
-	event_label.text = "⚠️ CRISIS: " + active_event["msg"]
+	event_label.text = "CRISIS: " + active_event["msg"]
+	event_label.visible = true
 
 	await get_tree().create_timer(EVENT_REACTION_TIME).timeout
 
@@ -355,7 +368,8 @@ func _on_event_timer_timeout() -> void:
 	var dmg = active_event["damage"]
 	
 	GameManager.player_stats["health"] = max(0, GameManager.player_stats["health"] - dmg)
-	event_label.text = "❌ Crisis not handled in time! (-" + str(dmg) + " Health)"
+	event_label.text = "Crisis not handled in time! (-" + str(dmg) + " Health)"
+	event_label.visible = true
 	
 	update_radial_stats_ui()
 	
@@ -366,6 +380,7 @@ func _on_event_timer_timeout() -> void:
 	await get_tree().create_timer(1.5).timeout
 	if not event_active and not game_over:
 		event_label.text = ""
+		event_label.visible = false
 
 func change_background():
 	match GameManager.current_disaster:

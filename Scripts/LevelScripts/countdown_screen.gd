@@ -46,24 +46,23 @@ func change_scene():
 	get_tree().change_scene_to_file("res://Scenes/prepare.tscn")
 
 func _on_main_timer_timeout():
-	label.text = "Time is Up"
 	GameManager.select_random_disaster()
 	prepare_custom_timer(0.5, true, switch_to_preview_screen)
 	
 func update_disaster_visual():
 	match GameManager.current_disaster:
 		GameManager.DisasterType.Earthquake:
-			disaster_texture_rect.texture = GameManager.tex_earthquake
+			disaster_texture_rect.texture = GameManager.tex_earthquake_pre
 			disaster_name.text = "Earthquake"
 			
 		GameManager.DisasterType.Flood:
-			disaster_texture_rect.texture = GameManager.tex_flood
+			disaster_texture_rect.texture = GameManager.tex_flood_pre
 			disaster_name.text = "Flood"
 			
 		GameManager.DisasterType.Avalanche:
-			disaster_texture_rect.texture = GameManager.tex_avalanche
+			disaster_texture_rect.texture = GameManager.tex_avalanche_pre
 			disaster_name.text = "Avalanche"
 			
 		GameManager.DisasterType.Fire:
-			disaster_texture_rect.texture = GameManager.tex_fire
+			disaster_texture_rect.texture = GameManager.tex_fire_pre
 			disaster_name.text = "Fire"

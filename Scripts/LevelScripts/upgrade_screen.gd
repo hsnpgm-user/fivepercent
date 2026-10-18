@@ -5,9 +5,9 @@ extends Control
 @onready var total_score_label: Label = $MarginContainer/VBoxContainer/TotalScore
 @onready var capacity_info_label: Label = $MarginContainer/VBoxContainer/CapasityInfo
 @onready var cost_label: Label = $MarginContainer/VBoxContainer/Price
-@onready var status_message_label: Label = $MarginContainer/VBoxContainer/StatusMsg
-@onready var upgrade_button: Button = $MarginContainer/VBoxContainer/UpgradeButton
-@onready var next_run_button: Button = $MarginContainer/VBoxContainer/NextButton
+@onready var status_message_label: Label = $StatusMsg
+@onready var upgrade_button: Button = $UpgradeButton
+@onready var next_run_button: Button = $NextButton
 
 # --- AYARLAR ---
 const BASE_UPGRADE_COST: int = 300    # İlk yükseltme maliyeti
@@ -39,11 +39,11 @@ func update_ui() -> void:
 	
 	# 1. Toplam Skor Gösterimi
 	if total_score_label:
-		total_score_label.text = "🏆 Total Score: " + str(GameManager.survival_points)
+		total_score_label.text = str(GameManager.survival_points)
 		
 	# 2. Çanta Kapasitesi Gösterimi
 	if capacity_info_label:
-		capacity_info_label.text = "📦 Bag Capasity: " + str(GameManager.max_bag_slot_count) + " / " + str(MAX_BAG_CAPACITY) + " Slot"
+		capacity_info_label.text = str(GameManager.max_bag_slot_count) + " / " + str(MAX_BAG_CAPACITY)
 
 	# 3. Maksimum Kapasite veya Maliyet Kontrolü
 	if GameManager.max_bag_slot_count >= MAX_BAG_CAPACITY:
@@ -51,19 +51,16 @@ func update_ui() -> void:
 			cost_label.text = "✨ Max Bag Capasity Reached!"
 		if upgrade_button:
 			upgrade_button.disabled = true
-			upgrade_button.text = "MAX LEVEL"
 	else:
 		if cost_label:
-			cost_label.text = "💰 Upgrade Price: " + str(current_upgrade_cost) + " Points"
+			cost_label.text = str(current_upgrade_cost)
 		
 		# Puan yetiyorsa butonu aktif et, yetmiyorsa pasifleştir
 		if upgrade_button:
 			if GameManager.survival_points >= current_upgrade_cost:
 				upgrade_button.disabled = false
-				upgrade_button.text = "UPGRADE BAG CAPASITY (+1 SLOT)"
 			else:
 				upgrade_button.disabled = true
-				upgrade_button.text = "NOT ENOUGH POINTS"
 
 # --- ÇANTA YÜKSELTME BUTONU ---
 func _on_upgrade_button_pressed() -> void:

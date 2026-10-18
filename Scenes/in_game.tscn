@@ -1,13 +1,30 @@
 [gd_scene format=3 uid="uid://dptl53u2e6rt5"]
 
 [ext_resource type="Script" uid="uid://bet5h0u18qsoh" path="res://Scripts/LevelScripts/in_game.gd" id="1_ltx6v"]
-[ext_resource type="Texture2D" uid="uid://cllhw8pxashhv" path="res://icon.svg" id="2_ltx6v"]
+[ext_resource type="Texture2D" uid="uid://ba2dm4w27j0om" path="res://Assets/UI/health bar.png" id="2_16bix"]
+[ext_resource type="Texture2D" uid="uid://ct8agbqfsfhua" path="res://Assets/UI/condition s button.png" id="3_1e0w3"]
+[ext_resource type="Texture2D" uid="uid://utnygrr0tq7y" path="res://Assets/UI/wather bar.png" id="3_rl3tg"]
+[ext_resource type="Texture2D" uid="uid://bi07foxygbgai" path="res://Assets/UI/hunger bar.png" id="4_2fron"]
+[ext_resource type="Texture2D" uid="uid://516njmtl6y0" path="res://Assets/UI/condition s button clicked.png" id="4_5eh6y"]
+[ext_resource type="Texture2D" uid="uid://h50v11scnadk" path="res://Assets/UI/heath bar.png" id="5_tikr8"]
+[ext_resource type="Texture2D" uid="uid://du71ktlgkmm0c" path="res://Assets/UI/warning pop up message success.png" id="6_2fron"]
+[ext_resource type="Texture2D" uid="uid://bkhttax7ln0l8" path="res://Assets/UI/warning pop up message.png" id="6_rl3tg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ltx6v"]
-font_size = 40
+font_size = 25
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_1e0w3"]
 font_size = 50
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0tqgd"]
+texture = ExtResource("3_1e0w3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_16bix"]
+texture = ExtResource("4_5eh6y")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2oxtv"]
+texture = ExtResource("3_1e0w3")
 
 [node name="in_game" type="Node2D" unique_id=519035058]
 script = ExtResource("1_ltx6v")
@@ -40,50 +57,67 @@ grow_vertical = 2
 color = Color(0.17254902, 0.17254902, 0.17254902, 0.7019608)
 
 [node name="HealthBar" type="TextureProgressBar" parent="UI" unique_id=1636493154]
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
 layout_mode = 0
 offset_left = 52.0
 offset_top = 70.0
 offset_right = 202.0
 offset_bottom = 220.0
+scale = Vector2(0.62, 0.62)
 value = 100.0
 fill_mode = 5
-texture_progress = ExtResource("2_ltx6v")
+texture_progress = ExtResource("2_16bix")
 
 [node name="ThirstBar" type="TextureProgressBar" parent="UI" unique_id=849353541]
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
 layout_mode = 0
 offset_left = 1730.0
 offset_top = 78.0
 offset_right = 1880.0
 offset_bottom = 228.0
+scale = Vector2(0.62, 0.62)
 value = 100.0
 fill_mode = 5
-texture_progress = ExtResource("2_ltx6v")
+texture_progress = ExtResource("3_rl3tg")
 
 [node name="HungerBar" type="TextureProgressBar" parent="UI" unique_id=354999970]
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
 layout_mode = 0
 offset_left = 1533.0
 offset_top = 73.0
 offset_right = 1683.0
 offset_bottom = 223.0
+scale = Vector2(0.62, 0.62)
 value = 100.0
 fill_mode = 5
-texture_progress = ExtResource("2_ltx6v")
+texture_progress = ExtResource("4_2fron")
 
 [node name="TempBar" type="TextureProgressBar" parent="UI" unique_id=322495966]
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
 layout_mode = 0
 offset_left = 1341.0
 offset_top = 70.0
 offset_right = 1491.0
 offset_bottom = 220.0
+scale = Vector2(0.62, 0.62)
 value = 100.0
 fill_mode = 5
-texture_progress = ExtResource("2_ltx6v")
+texture_progress = ExtResource("5_tikr8")
 
-[node name="EventLabel" type="Label" parent="UI" unique_id=307200246]
+[node name="SituationTexture" type="TextureRect" parent="UI" unique_id=1759460632]
+layout_mode = 0
+offset_left = 1195.0
+offset_top = 513.0
+offset_right = 1795.0
+offset_bottom = 813.0
+texture = ExtResource("6_2fron")
+expand_mode = 2
+
+[node name="SituationLabel" type="Label" parent="UI/SituationTexture" unique_id=372985048]
 custom_maximum_size = Vector2(800, 200)
 layout_mode = 1
 anchors_preset = 8
@@ -91,29 +125,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -381.0
-offset_top = -210.0
-offset_right = 419.0
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 2
-label_settings = SubResource("LabelSettings_ltx6v")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="SituationLabel" type="Label" parent="UI" unique_id=372985048]
-custom_maximum_size = Vector2(800, 200)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -381.0
-offset_top = 128.0
-offset_right = 419.0
-offset_bottom = 328.0
+offset_left = -282.0
+offset_top = -137.0
+offset_right = 268.0
+offset_bottom = 63.0
 grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_ltx6v")
@@ -134,6 +149,34 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 30
 alignment = 1
+
+[node name="EventTexture" type="TextureRect" parent="UI" unique_id=271495565]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 528.0
+offset_right = 713.0
+offset_bottom = 828.0
+texture = ExtResource("6_rl3tg")
+expand_mode = 2
+
+[node name="EventLabel" type="Label" parent="UI/EventTexture" unique_id=307200246]
+custom_maximum_size = Vector2(550, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -282.0
+offset_top = -137.0
+offset_right = 268.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_ltx6v")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="EndGameScreen" type="Control" parent="." unique_id=464024825]
 visible = false
@@ -157,7 +200,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.13682577, 0.13682574, 0.13682571, 0.84705883)
+color = Color(0.13725491, 0.13725491, 0.13725491, 0.9254902)
 
 [node name="MarginContainer" type="MarginContainer" parent="EndGameScreen" unique_id=1198837627]
 layout_mode = 1
@@ -228,12 +271,15 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ContinueButton" type="Button" parent="EndGameScreen/MarginContainer/VBoxContainer" unique_id=1321720399]
-custom_minimum_size = Vector2(300, 100)
+custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 37
-text = "Continue"
+theme_override_styles/normal = SubResource("StyleBoxTexture_0tqgd")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_16bix")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2oxtv")
+icon_alignment = 1
 
 [node name="EventTimer" type="Timer" parent="." unique_id=624290011]
 wait_time = 15.0

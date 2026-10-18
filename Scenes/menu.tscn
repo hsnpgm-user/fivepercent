@@ -1,7 +1,52 @@
 [gd_scene format=3 uid="uid://c2vkickayu1uh"]
 
 [ext_resource type="Script" uid="uid://j1i70b0dx8ij" path="res://Scripts/LevelScripts/menu.gd" id="1_xhh6f"]
+[ext_resource type="Texture2D" uid="uid://cwmscoxoqm3fy" path="res://Assets/UI/main_menu.png" id="2_rfqti"]
 [ext_resource type="AudioStream" uid="uid://cgtvj268mdt4c" path="res://Assets/Audio/Ambient/menu.mp3" id="2_xhh6f"]
+[ext_resource type="Texture2D" uid="uid://blu1w8lvjft4t" path="res://Assets/UI/start.png" id="3_7qvly"]
+[ext_resource type="Texture2D" uid="uid://cnj42c71h3136" path="res://Assets/UI/start clicket.png" id="4_rfqti"]
+[ext_resource type="Texture2D" uid="uid://bmsox828fvmkk" path="res://Assets/UI/settings.png" id="5_g8i7c"]
+[ext_resource type="Texture2D" uid="uid://c5t3gycttcjns" path="res://Assets/UI/settings clicked.png" id="6_23t3j"]
+[ext_resource type="Texture2D" uid="uid://b3fwqumh6pb7v" path="res://Assets/UI/credits.png" id="7_8ph6h"]
+[ext_resource type="Texture2D" uid="uid://rywghidpqaa" path="res://Assets/UI/credits clicked.png" id="8_5ti5v"]
+[ext_resource type="Texture2D" uid="uid://cn0xsbpowi32r" path="res://Assets/UI/quit.png" id="9_1by5w"]
+[ext_resource type="Texture2D" uid="uid://j160vhsapfsd" path="res://Assets/UI/quit clict.png" id="10_kmwmt"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rc6uw"]
+texture = ExtResource("3_7qvly")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dldpb"]
+texture = ExtResource("4_rfqti")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l5wmx"]
+texture = ExtResource("3_7qvly")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d77ms"]
+texture = ExtResource("5_g8i7c")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3p34a"]
+texture = ExtResource("6_23t3j")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2oxtv"]
+texture = ExtResource("5_g8i7c")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_owyel"]
+texture = ExtResource("7_8ph6h")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h63v2"]
+texture = ExtResource("8_5ti5v")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gmf5r"]
+texture = ExtResource("7_8ph6h")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l6llh"]
+texture = ExtResource("9_1by5w")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ocger"]
+texture = ExtResource("10_kmwmt")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kjkj4"]
+texture = ExtResource("9_1by5w")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ke5xo"]
 font_size = 20
@@ -21,6 +66,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xhh6f")
 
+[node name="BG" type="TextureRect" parent="." unique_id=1449918432]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_rfqti")
+
 [node name="MenuMusic" type="AudioStreamPlayer2D" parent="." unique_id=1126277627]
 stream = ExtResource("2_xhh6f")
 autoplay = true
@@ -32,9 +83,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 182.0
-offset_top = -278.0
+offset_top = -91.0
 offset_right = 532.0
-offset_bottom = 237.0
+offset_bottom = 424.0
 grow_vertical = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_right = 30
@@ -49,22 +100,30 @@ layout_mode = 2
 [node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1799396627]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
-text = "Start"
+theme_override_styles/normal = SubResource("StyleBoxTexture_rc6uw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dldpb")
+theme_override_styles/hover = SubResource("StyleBoxTexture_l5wmx")
 
 [node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1795245578]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
-text = "Options"
+theme_override_styles/normal = SubResource("StyleBoxTexture_d77ms")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3p34a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2oxtv")
 
 [node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1699533646]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
-text = "Credits"
+theme_override_styles/normal = SubResource("StyleBoxTexture_owyel")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_h63v2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gmf5r")
 
 [node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=140372949]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
-text = "Exit"
+theme_override_styles/normal = SubResource("StyleBoxTexture_l6llh")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ocger")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kjkj4")
 
 [node name="OptionsPanel" type="Control" parent="." unique_id=1330483388]
 visible = false

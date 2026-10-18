@@ -5,6 +5,11 @@ var master_volume: float = 1 # Varsayılan %100 (normal ses)
 enum DisasterType {Earthquake, Flood, Avalanche, Fire}
 var current_disaster: DisasterType = DisasterType.Earthquake
 
+var tex_earthquake_pre = preload("res://Assets/disasters/disasters_preview/earthquake.png")
+var tex_flood_pre = preload("res://Assets/disasters/disasters_preview/flood.png")
+var tex_avalanche_pre = preload("res://Assets/disasters/disasters_preview/avalanche.png")
+var tex_fire_pre = preload("res://Assets/disasters/disasters_preview/fire.png")
+
 var tex_earthquake = preload("res://Assets/disasters/earthquake.png")
 var tex_flood = preload("res://Assets/disasters/flood.png")
 var tex_avalanche = preload("res://Assets/disasters/avalanche.png")
