@@ -11,7 +11,7 @@ var slot_scene = preload("res://Scenes/slot.tscn")
 var time_left: float = 10
 
 @onready var prepare_time: Timer = $PrepareTime
-@onready var countdown: Label = $Countdown
+@onready var countdown: Label = $TextureRect2/Countdown
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -21,7 +21,7 @@ var tex_ch_avalanche = preload("res://Assets/disasters/avalanche_body.png")
 var tex_ch_fire = preload("res://Assets/disasters/fire_body.png")
 
 var max_bag_slot_count: int = 3
-var survival_points: int = 700
+var survival_points: int = 0
 var cabinet_slots: Array = []
 var bag_slots: Array = []
 

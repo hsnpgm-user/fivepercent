@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://h50v11scnadk" path="res://Assets/UI/heath bar.png" id="5_tikr8"]
 [ext_resource type="Texture2D" uid="uid://b5mlqdhdnacew" path="res://Assets/UI/warning_pop_up_message_success.png" id="6_2fron"]
 [ext_resource type="Texture2D" uid="uid://cm683yfkdf6is" path="res://Assets/UI/warning_pop_up_message.png" id="7_tikr8"]
+[ext_resource type="Texture2D" uid="uid://b5l1040pqfati" path="res://Assets/UI/luse_con..png" id="8_tikr8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ltx6v"]
 font_size = 25
@@ -17,6 +18,12 @@ outline_size = 3
 
 [sub_resource type="LabelSettings" id="LabelSettings_1e0w3"]
 font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_tikr8"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_r382v"]
+font_size = 35
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0tqgd"]
 texture = ExtResource("3_1e0w3")
@@ -118,25 +125,6 @@ offset_bottom = 813.0
 texture = ExtResource("6_2fron")
 expand_mode = 2
 
-[node name="SituationLabel2" type="Label" parent="UI/SituationTexture" unique_id=372985048]
-custom_maximum_size = Vector2(800, 200)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -282.0
-offset_top = -137.0
-offset_right = 268.0
-offset_bottom = 63.0
-grow_horizontal = 2
-grow_vertical = 2
-label_settings = SubResource("LabelSettings_ltx6v")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
 [node name="SituationLabel" type="Label" parent="UI/SituationTexture" unique_id=1034909813]
 custom_maximum_size = Vector2(550, 200)
 layout_mode = 1
@@ -213,33 +201,38 @@ offset_bottom = 1039.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="EndGameScreen" unique_id=304206014]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.13725491, 0.13725491, 0.13725491, 0.9254902)
+[node name="TextureRect" type="TextureRect" parent="EndGameScreen" unique_id=1642177140]
+layout_mode = 0
+offset_left = -474.0
+offset_top = -31.0
+offset_right = 1446.0
+offset_bottom = 1049.0
+texture = ExtResource("8_tikr8")
 
 [node name="MarginContainer" type="MarginContainer" parent="EndGameScreen" unique_id=1198837627]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 105.0
+offset_right = -25.684998
+offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 50
+theme_override_constants/margin_top = 96
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="EndGameScreen/MarginContainer" unique_id=786550284]
 layout_mode = 2
-theme_override_constants/separation = 97
+offset_transform_enabled = true
+theme_override_constants/separation = 55
 
 [node name="Label" type="Label" parent="EndGameScreen/MarginContainer/VBoxContainer" unique_id=2017305940]
 layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -89.86)
 text = "Title"
 label_settings = SubResource("LabelSettings_1e0w3")
 horizontal_alignment = 1
@@ -247,48 +240,77 @@ vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="EndGameScreen/MarginContainer/VBoxContainer" unique_id=482323700]
 layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(720.72, 0)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="EndGameScreen/MarginContainer/VBoxContainer/MarginContainer" unique_id=1500964652]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="EndGameScreen/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=55112181]
 layout_mode = 2
+text = "aa"
+label_settings = SubResource("LabelSettings_tikr8")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="EndGameScreen/MarginContainer/VBoxContainer" unique_id=1204685851]
 layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(720.72, 0)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="EndGameScreen/MarginContainer/VBoxContainer/MarginContainer2" unique_id=1264173391]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="EndGameScreen/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1911529817]
 layout_mode = 2
+text = "aa"
+label_settings = SubResource("LabelSettings_tikr8")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="MarginContainer3" type="MarginContainer" parent="EndGameScreen/MarginContainer/VBoxContainer" unique_id=1806173505]
 layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(720.72, 0)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="EndGameScreen/MarginContainer/VBoxContainer/MarginContainer3" unique_id=1594331591]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="EndGameScreen/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer" unique_id=1697090135]
 layout_mode = 2
+text = "aa"
+label_settings = SubResource("LabelSettings_tikr8")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="MarginContainer4" type="MarginContainer" parent="EndGameScreen/MarginContainer/VBoxContainer" unique_id=913675509]
 layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(720.72, 0)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="EndGameScreen/MarginContainer/VBoxContainer/MarginContainer4" unique_id=488672139]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="EndGameScreen/MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer" unique_id=676956387]
 layout_mode = 2
+text = "aa"
+label_settings = SubResource("LabelSettings_tikr8")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="MarginContainer5" type="MarginContainer" parent="EndGameScreen/MarginContainer/VBoxContainer" unique_id=2113871212]
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="EndGameScreen/MarginContainer/VBoxContainer/MarginContainer5" unique_id=997879430]
 layout_mode = 2
+alignment = 1
 
 [node name="Label" type="Label" parent="EndGameScreen/MarginContainer/VBoxContainer/MarginContainer5/HBoxContainer" unique_id=768174803]
 layout_mode = 2
+text = "aa"
+label_settings = SubResource("LabelSettings_r382v")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="ContinueButton" type="Button" parent="EndGameScreen/MarginContainer/VBoxContainer" unique_id=1321720399]
 custom_minimum_size = Vector2(300, 150)
@@ -310,7 +332,7 @@ wait_time = 78.0
 [node name="CustomTimer" type="Timer" parent="." unique_id=1337223051]
 
 [node name="SurvivalStatsTimer" type="Timer" parent="." unique_id=1633797444]
-wait_time = 1.6999999999999997
+wait_time = 1.6999999999999995
 
 [node name="ItemAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1922164328]
 

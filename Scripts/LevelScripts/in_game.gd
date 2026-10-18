@@ -277,39 +277,38 @@ func _on_slot_clicked(slot_type: String, index: int) -> void:
 	play_item_sound(item_id)
 
 	# 1. Temel İhtiyaç Giderme (Su / Konserve)
-	if item.has("thirst_restore" or item_id == "water"):
-		GameManager.player_stats["thirst"] = min(100, GameManager.player_stats["thirst"] + item["thirst_restore"])
-	if item.has("hunger_restore" or item_id == "con_foods"):
-		GameManager.player_stats["hunger"] = min(100, GameManager.player_stats["hunger"] + item["hunger_restore"])
+	if item_id == "water" or item.has("thirst_restore"):
+		var restore_val = item.get("thirst_restore", 35)
+		GameManager.player_stats["thirst"] = min(100, GameManager.player_stats["thirst"] + restore_val)
+		
+	if item_id == "con_foods" or item.has("hunger_restore"):
+		var restore_val = item.get("hunger_restore", 35)
+		GameManager.player_stats["hunger"] = min(100, GameManager.player_stats["hunger"] + restore_val)
 
-	# --- KRİZ KONTROLÜ ÖNCE YAPILIYOR ---
+	# --- KRİZ KONTROLÜ ---
 	var is_correct_item_for_event = false
 	if event_active and active_event.has("item") and item_id == active_event["item"]:
 		is_correct_item_for_event = true
 
-	# 2. Afet Matrisi ve Eşya Özel Etkileri (Doğru eşyadaysa debuff'lar engellenir)
-	for proto in GameManager.all_item_pool:
-		if proto["item_id"] == item_id and proto.has("effects"):
-			var disaster_effects = proto["effects"]
-			if disaster_effects.has(GameManager.current_disaster):
-				var effect_data = disaster_effects[GameManager.current_disaster]
-				var target_stat = effect_data["stat"] 
-				var val = effect_data["val"]
-				
-				if is_correct_item_for_event and val < 0:
-					continue 
-				
-				if target_stat == "health":
-					if item_id == "med_kit":
-						if event_active:
-							GameManager.player_stats["health"] = min(100, GameManager.player_stats["health"] + 18)
-						else:
+	# 2. Afet Matrisi ve Eşya Özel Etkileri
+	# KURAL: Kriz anında doğru eşyaysa, hiçbir eksi etki (debuff/ceza) uygulanmaz!
+	if not is_correct_item_for_event:
+		for proto in GameManager.all_item_pool:
+			if proto["item_id"] == item_id and proto.has("effects"):
+				var disaster_effects = proto["effects"]
+				if disaster_effects.has(GameManager.current_disaster):
+					var effect_data = disaster_effects[GameManager.current_disaster]
+					var target_stat = effect_data["stat"] 
+					var val = effect_data["val"]
+					
+					if target_stat == "health":
+						if item_id == "med_kit":
 							GameManager.player_stats["health"] = min(100, GameManager.player_stats["health"] + 5)
+						else:
+							if val < 0:
+								GameManager.player_stats["health"] = max(0, GameManager.player_stats["health"] + val)
 					else:
-						if val < 0:
-							GameManager.player_stats["health"] = max(0, GameManager.player_stats["health"] + val)
-				else:
-					GameManager.player_stats[target_stat] = clamp(GameManager.player_stats[target_stat] + val, 0, 100)
+						GameManager.player_stats[target_stat] = clamp(GameManager.player_stats[target_stat] + val, 0, 100)
 
 	# 3. Kriz Durumunu Tamamlama
 	if is_correct_item_for_event:
@@ -323,7 +322,6 @@ func _on_slot_clicked(slot_type: String, index: int) -> void:
 	update_radial_stats_ui()
 
 	# --- HİKAYESEL GÖRSEL GERİ BİLDİRİM ---
-	
 	if is_correct_item_for_event:
 		situation_label.text = "Crisis Resolved! (+100 Points)"
 		if sit_tex: sit_tex.visible = true
@@ -429,13 +427,13 @@ func show_game_summary(is_survived: bool, title_text: String, advice_text: Strin
 		summary_title_label.text = title_text
 		
 	if summary_label_1:
-		summary_label_1.text = "⏱️ Survival Time: " + str(int(elapsed_time)) + " Seconds"
+		summary_label_1.text = str(int(elapsed_time)) + " Seconds"
 	if summary_label_2:
-		summary_label_2.text = "✅ Correct Choice: " + str(successful_interventions)
+		summary_label_2.text = str(successful_interventions)
 	if summary_label_3:
-		summary_label_3.text = "⭐ Points Earned: +" + str(earned_score)
+		summary_label_3.text = str(earned_score)
 	if summary_label_4:
-		summary_label_4.text = "🏆 Total Score: " + str(GameManager.survival_points)
+		summary_label_4.text = str(GameManager.survival_points)
 	if summary_label_5:
 		summary_label_5.text = advice_text
 

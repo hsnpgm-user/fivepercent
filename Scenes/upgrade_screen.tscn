@@ -13,7 +13,7 @@
 font_size = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_g1a74"]
-font_size = 60
+font_size = 50
 outline_size = 4
 shadow_size = 26
 
@@ -83,6 +83,11 @@ offset_right = 1887.0
 offset_bottom = 949.0
 texture = ExtResource("2_l53bo")
 
+[node name="Canta" type="Sprite2D" parent="TextureRect2" unique_id=501850896]
+position = Vector2(124, 625)
+scale = Vector2(1.0249101, 1.0249101)
+texture = ExtResource("4_gmf5r")
+
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1052221184]
 custom_minimum_size = Vector2(400, 600)
 layout_mode = 1
@@ -102,7 +107,7 @@ scale = Vector2(0.73989284, 0.73989284)
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1153734996]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_constants/separation = 80
+theme_override_constants/separation = 107
 
 [node name="TotalScore" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1742429498]
 layout_mode = 2
@@ -124,11 +129,6 @@ text = "aaaa"
 label_settings = SubResource("LabelSettings_g1a74")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Canta" type="Sprite2D" parent="MarginContainer" unique_id=501850896]
-position = Vector2(-696.04694, 733.8901)
-scale = Vector2(1.3852142, 1.3852142)
-texture = ExtResource("4_gmf5r")
 
 [node name="StatusMsg" type="Label" parent="." unique_id=1629961906]
 layout_mode = 0

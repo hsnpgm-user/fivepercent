@@ -4,12 +4,10 @@
 [ext_resource type="AudioStream" uid="uid://da275thnmyhdy" path="res://Assets/Audio/SFX/backpack1.mp3" id="2_0skrd"]
 [ext_resource type="AudioStream" uid="uid://d1tyf0n33jolx" path="res://Assets/Audio/SFX/alarm1.mp3" id="3_2kngy"]
 [ext_resource type="Texture2D" uid="uid://bc01c7lp0ws0m" path="res://Assets/CustomBackgrounds/closet_bg.png" id="4_2kngy"]
+[ext_resource type="Texture2D" uid="uid://c10m1eiyhrt7t" path="res://Assets/UI/timer.png" id="5_wi5vh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p16ah"]
-font_size = 100
-
-[sub_resource type="LabelSettings" id="LabelSettings_p231s"]
-font_size = 77
+font_size = 120
 
 [node name="Prepare" type="Control" unique_id=2002134061]
 layout_mode = 3
@@ -32,25 +30,23 @@ texture = ExtResource("4_2kngy")
 [node name="PrepareTime" type="Timer" parent="." unique_id=143126219]
 wait_time = 10.0
 
-[node name="Countdown" type="Label" parent="." unique_id=474741670]
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1689918916]
 layout_mode = 0
-offset_left = 1706.0
+offset_left = 895.0
 offset_top = 27.0
-offset_right = 1867.0
-offset_bottom = 220.0
+offset_right = 1203.0
+offset_bottom = 336.0
+scale = Vector2(0.68097067, 0.68097067)
+texture = ExtResource("5_wi5vh")
+
+[node name="Countdown" type="Label" parent="TextureRect2" unique_id=474741670]
+layout_mode = 0
+offset_left = 55.80269
+offset_top = 51.39722
+offset_right = 255.80269
+offset_bottom = 251.39722
 text = "10"
 label_settings = SubResource("LabelSettings_p16ah")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label" type="Label" parent="." unique_id=1494227353]
-layout_mode = 0
-offset_left = 610.0
-offset_top = 97.0
-offset_right = 1279.0
-offset_bottom = 203.0
-text = "Prepare Scene"
-label_settings = SubResource("LabelSettings_p231s")
 horizontal_alignment = 1
 vertical_alignment = 1
 

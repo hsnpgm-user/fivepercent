@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k7kq7iye6y6e"
-path="res://.godot/imported/luse con..png-f382b2dacb7af75fa9282ab08a3e39ea.ctex"
+uid="uid://6pe8nnvuqy7l"
+path="res://.godot/imported/game_icon.png-370898b2b8f64f30ebe14b13c52e75b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/luse con..png"
-dest_files=["res://.godot/imported/luse con..png-f382b2dacb7af75fa9282ab08a3e39ea.ctex"]
+source_file="res://Assets/UI/game_icon.png"
+dest_files=["res://.godot/imported/game_icon.png-370898b2b8f64f30ebe14b13c52e75b4.ctex"]
 
 [params]
 
