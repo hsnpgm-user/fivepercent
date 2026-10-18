@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dux7kvjhkm75x" path="res://Scripts/LevelScripts/prepare.gd" id="1_p231s"]
 [ext_resource type="AudioStream" uid="uid://da275thnmyhdy" path="res://Assets/Audio/SFX/backpack1.mp3" id="2_0skrd"]
-[ext_resource type="Texture2D" uid="uid://c8ay72wno8mn1" path="res://Assets/CustomBackgrounds/dolap_bg.png" id="2_p231s"]
 [ext_resource type="AudioStream" uid="uid://d1tyf0n33jolx" path="res://Assets/Audio/SFX/alarm1.mp3" id="3_2kngy"]
+[ext_resource type="Texture2D" uid="uid://bc01c7lp0ws0m" path="res://Assets/CustomBackgrounds/closet_bg.png" id="4_2kngy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p16ah"]
 font_size = 100
@@ -26,7 +26,7 @@ stream = ExtResource("3_2kngy")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_p231s")
+texture = ExtResource("4_2kngy")
 
 [node name="PrepareTime" type="Timer" parent="." unique_id=143126219]
 wait_time = 7.0

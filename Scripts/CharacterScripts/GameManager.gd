@@ -9,9 +9,9 @@ var tex_avalanche = preload("res://Assets/disasters/avalanche.png")
 var tex_fire = preload("res://Assets/disasters/fire.png")
 
 var tex_ch_earthquake = preload("res://Assets/disasters/earthquake_body.png")
-var tex_ch_flood = preload("res://Assets/disasters/flood.png")
+var tex_ch_flood = preload("res://Assets/disasters/flood_body.png")
 var tex_ch_avalanche = preload("res://Assets/disasters/avalanche_body.png")
-var tex_ch_fire = preload("res://Assets/disasters/fire.png")
+var tex_ch_fire = preload("res://Assets/disasters/fire_body.png")
 
 var max_bag_slot_count: int = 3
 var survival_points: int = 700

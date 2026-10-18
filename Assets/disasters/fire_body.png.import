@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8ay72wno8mn1"
-path="res://.godot/imported/dolap_bg.png-c1d42b34d9bc7891633692d7c96a6fb0.ctex"
+uid="uid://girkqp36yd6b"
+path="res://.godot/imported/fire_body.png-4841f00aaddd4de2092bbd0874d87e86.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CustomBackgrounds/dolap_bg.png"
-dest_files=["res://.godot/imported/dolap_bg.png-c1d42b34d9bc7891633692d7c96a6fb0.ctex"]
+source_file="res://Assets/disasters/fire_body.png"
+dest_files=["res://.godot/imported/fire_body.png-4841f00aaddd4de2092bbd0874d87e86.ctex"]
 
 [params]
 

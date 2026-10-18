@@ -373,8 +373,10 @@ func change_background():
 			character.texture = GameManager.tex_ch_earthquake
 			background.texture = GameManager.tex_earthquake
 		GameManager.DisasterType.Flood:
+			character.texture = GameManager.tex_ch_flood
 			background.texture = GameManager.tex_flood
 		GameManager.DisasterType.Fire:
+			character.texture = GameManager.tex_ch_fire
 			background.texture = GameManager.tex_fire
 		GameManager.DisasterType.Avalanche:
 			character.texture = GameManager.tex_ch_avalanche
