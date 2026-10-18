@@ -1,7 +1,7 @@
 extends Node2D
 
-const GAME_DURATION: float = 78
-const SURVIVE_TIME: float = 78
+const GAME_DURATION: float = 90
+const SURVIVE_TIME: float = 90
 const EVENT_REACTION_TIME: float = 8
 const MID_PHASE_START: float = 20
 const LATE_PHASE_START: float = 40
@@ -308,6 +308,10 @@ func _on_slot_clicked(slot_type: String, index: int) -> void:
 		event_label.text = ""
 	else:
 		situation_label.text = "📖 " + story_text
+	
+	var tween_label = create_tween()
+	tween_label.tween_interval(3.0)
+	tween_label.tween_callback(func(): situation_label.texte = "")
 	
 	GameManager.bag_slots[index] = {}
 	draw_ingame_bag()

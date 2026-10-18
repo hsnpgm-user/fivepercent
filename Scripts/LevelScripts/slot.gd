@@ -10,6 +10,8 @@ var slot_item_data: Dictionary = {}
 
 @onready var tooltip_label: Label = $TooltipLabel if has_node("TooltipLabel") else null
 
+@onready var hover_audio: AudioStreamPlayer2D = $Hover
+
 @onready var item_icon = $Icon
 
 # Called when the node enters the scene tree for the first time.
@@ -41,6 +43,7 @@ func _process(delta: float) -> void:
 func _on_mouse_entered():
 	if slot_item_data.is_empty(): return
 	
+	hover_audio.play()
 	# 1. Outline / Parlama hissi için ikonu hafif büyütüp parlatalım (Tween animasyonu)
 	var tween = create_tween().set_parallel(true).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(item_icon, "scale", Vector2(1.15, 1.15), 0.15)

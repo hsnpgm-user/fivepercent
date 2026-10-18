@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://d2dc4yya38lae"]
 
 [ext_resource type="Script" uid="uid://bwv245qddg3b8" path="res://Scripts/LevelScripts/slot.gd" id="1_12ej0"]
+[ext_resource type="AudioStream" uid="uid://g4pw21audr2s" path="res://Assets/Audio/SFX/hover.mp3" id="2_12ej0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_luhj6"]
 font_size = 40
 
 [node name="Slot" type="PanelContainer" unique_id=177519146]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(148, 107)
 custom_maximum_size = Vector2(100, 100)
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,6 +25,8 @@ layout_mode = 2
 color = Color(0.2, 0.2, 0.2, 0)
 
 [node name="Icon" type="TextureRect" parent="." unique_id=372462125]
+custom_minimum_size = Vector2(148, 107)
+custom_maximum_size = Vector2(148, 107)
 layout_mode = 2
 
 [node name="TooltipLabel" type="Label" parent="." unique_id=139510189]
@@ -34,3 +37,6 @@ offset_transform_position = Vector2(0, -80)
 label_settings = SubResource("LabelSettings_luhj6")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Hover" type="AudioStreamPlayer2D" parent="." unique_id=2068170207]
+stream = ExtResource("2_12ej0")

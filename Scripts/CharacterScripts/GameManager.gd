@@ -134,36 +134,36 @@ var all_item_pool: Array = [
 # --- BU DİZİYİ GAMEMANAGER İÇİNDEKİ ESKİ event_pool İLE DEĞİŞTİR ---
 var event_pool: Array = [
 	# --- DEPREM (EARTHQUAKE) ---
-	{ "disaster": DisasterType.Earthquake, "phase": "early", "msg": "Sarsıntı başladı! Eşyalar devriliyor, etraf karanlık.", "item": "flash_light", "damage": 40, "id": "eq_1" },
-	{ "disaster": DisasterType.Earthquake, "phase": "early", "msg": "Toz bulutu yayıldı, nefes almak zorlaşıyor!", "item": "mask", "damage": 45, "id": "eq_2" },
-	{ "disaster": DisasterType.Earthquake, "phase": "mid", "msg": "Hafif yaralandın, kanama var!", "item": "med_kit", "damage": 50, "id": "eq_3" },
-	{ "disaster": DisasterType.Earthquake, "phase": "mid", "msg": "Enkaz altındasın! Sesini dışarıya duyurman lazım.", "item": "wistel", "damage": 35, "id": "eq_4" },
-	{ "disaster": DisasterType.Earthquake, "phase": "late", "msg": "Çaresiz bir bekleyiş başladı, boğazın kurudu!", "item": "water", "damage": 55, "id": "eq_5" },
-	{ "disaster": DisasterType.Earthquake, "phase": "late", "msg": "Dış dünya ile bağın koptu, bilgi alamıyorsun!", "item": "radio", "damage": 45, "id": "eq_6" },
+	{ "disaster": DisasterType.Earthquake, "phase": "early", "msg": "Sarsıntı başladı! Eşyalar devriliyor, etraf karanlık.", "item": "flash_light", "damage": 60, "id": "eq_1" },
+	{ "disaster": DisasterType.Earthquake, "phase": "early", "msg": "Toz bulutu yayıldı, nefes almak zorlaşıyor!", "item": "mask", "damage": 55, "id": "eq_2" },
+	{ "disaster": DisasterType.Earthquake, "phase": "mid", "msg": "Hafif yaralandın, kanama var!", "item": "med_kit", "damage": 70, "id": "eq_3" },
+	{ "disaster": DisasterType.Earthquake, "phase": "mid", "msg": "Enkaz altındasın! Sesini dışarıya duyurman lazım.", "item": "wistel", "damage": 50, "id": "eq_4" },
+	{ "disaster": DisasterType.Earthquake, "phase": "late", "msg": "Çaresiz bir bekleyiş başladı, boğazın kurudu!", "item": "water", "damage": 65, "id": "eq_5" },
+	{ "disaster": DisasterType.Earthquake, "phase": "late", "msg": "Dış dünya ile bağın koptu, bilgi alamıyorsun!", "item": "radio", "damage": 55, "id": "eq_6" },
 
 	# --- SEL (FLOOD) ---
-	{ "disaster": DisasterType.Flood, "phase": "early", "msg": "Su baskını kapıya ulaştı! Eşyalar ıslanıyor.", "item": "flash_light", "damage": 35, "id": "fl_1" },
-	{ "disaster": DisasterType.Flood, "phase": "early", "msg": "Su yükseliyor, ayakların suyun altında kaldı!", "item": "rubber_boots", "damage": 40, "id": "fl_2" },
-	{ "disaster": DisasterType.Flood, "phase": "mid", "msg": "Soğuk suyun içinde kalmaktan vücudun yaralandı!", "item": "med_kit", "damage": 45, "id": "fl_3" },
-	{ "disaster": DisasterType.Flood, "phase": "mid", "msg": "Su seviyesi beline kadar geldi, titremeye başladın!", "item": "thermal_blanket", "damage": 45, "id": "fl_4" },
-	{ "disaster": DisasterType.Flood, "phase": "late", "msg": "Çatıya tıkıldın, hipotermi riski var!", "item": "water", "damage": 50, "id": "fl_5" },
-	{ "disaster": DisasterType.Flood, "phase": "late", "msg": "Kurtarma botlarına sesini duyurmalısın!", "item": "wistel", "damage": 40, "id": "fl_6" },
+	{ "disaster": DisasterType.Flood, "phase": "early", "msg": "Su baskını kapıya ulaştı! Eşyalar ıslanıyor.", "item": "flash_light", "damage": 60, "id": "fl_1" },
+	{ "disaster": DisasterType.Flood, "phase": "early", "msg": "Su yükseliyor, ayakların suyun altında kaldı!", "item": "rubber_boots", "damage": 55, "id": "fl_2" },
+	{ "disaster": DisasterType.Flood, "phase": "mid", "msg": "Soğuk suyun içinde kalmaktan vücudun yaralandı!", "item": "med_kit", "damage": 60, "id": "fl_3" },
+	{ "disaster": DisasterType.Flood, "phase": "mid", "msg": "Su seviyesi beline kadar geldi, titremeye başladın!", "item": "thermal_blanket", "damage": 70, "id": "fl_4" },
+	{ "disaster": DisasterType.Flood, "phase": "late", "msg": "Çatıya tıkıldın, hipotermi riski var!", "item": "water", "damage": 60, "id": "fl_5" },
+	{ "disaster": DisasterType.Flood, "phase": "late", "msg": "Kurtarma botlarına sesini duyurmalısın!", "item": "wistel", "damage": 55, "id": "fl_6" },
 
 	# --- ÇIĞ (AVALANCHE) ---
-	{ "disaster": DisasterType.Avalanche, "phase": "early", "msg": "Şiddetli fırtına ve kar bastırdı!", "item": "flash_light", "damage": 35, "id": "av_1" },
-	{ "disaster": DisasterType.Avalanche, "phase": "early", "msg": "Kar fırtınasında yüzün ve ağzın karla doluyor!", "item": "mask", "damage": 35, "id": "av_2" },
-	{ "disaster": DisasterType.Avalanche, "phase": "mid", "msg": "Vücut ısın hızla düşüyor, donuyorsun!", "item": "thermal_blanket", "damage": 50, "id": "av_3" },
-	{ "disaster": DisasterType.Avalanche, "phase": "mid", "msg": "Donma belirtileri başladı, tıbbi müdahale lazım!", "item": "med_kit", "damage": 45, "id": "av_4" },
-	{ "disaster": DisasterType.Avalanche, "phase": "late", "msg": "Kar kütlesinin altında mahsur kaldın, ses ver!", "item": "wistel", "damage": 50, "id": "av_5" },
-	{ "disaster": DisasterType.Avalanche, "phase": "late", "msg": "Gücün tükeniyor, yardım ekiplerinden haber bekle!", "item": "radio", "damage": 40, "id": "av_6" },
+	{ "disaster": DisasterType.Avalanche, "phase": "early", "msg": "Şiddetli fırtına ve kar bastırdı!", "item": "flash_light", "damage": 50, "id": "av_1" },
+	{ "disaster": DisasterType.Avalanche, "phase": "early", "msg": "Kar fırtınasında yüzün ve ağzın karla doluyor!", "item": "mask", "damage": 50, "id": "av_2" },
+	{ "disaster": DisasterType.Avalanche, "phase": "mid", "msg": "Vücut ısın hızla düşüyor, donuyorsun!", "item": "thermal_blanket", "damage": 70, "id": "av_3" },
+	{ "disaster": DisasterType.Avalanche, "phase": "mid", "msg": "Donma belirtileri başladı, tıbbi müdahale lazım!", "item": "med_kit", "damage": 65, "id": "av_4" },
+	{ "disaster": DisasterType.Avalanche, "phase": "late", "msg": "Kar kütlesinin altında mahsur kaldın, ses ver!", "item": "wistel", "damage": 70, "id": "av_5" },
+	{ "disaster": DisasterType.Avalanche, "phase": "late", "msg": "Gücün tükeniyor, yardım ekiplerinden haber bekle!", "item": "radio", "damage": 65, "id": "av_6" },
 
 	# --- YANGIN (FIRE) ---
-	{ "disaster": DisasterType.Fire, "phase": "early", "msg": "Duman pencerelerden içeri doluyor, boğuluyorsun!", "item": "mask", "damage": 45, "id": "fi_1" },
-	{ "disaster": DisasterType.Fire, "phase": "early", "msg": "Kıvılcımlar üstüne sıçramaya başladı!", "item": "fire_blanket", "damage": 50, "id": "fi_2" },
-	{ "disaster": DisasterType.Fire, "phase": "mid", "msg": "Alevler etrafı sardı, aşırı sıcaklıktan kavruluyorsun!", "item": "water", "damage": 45, "id": "fi_3" },
-	{ "disaster": DisasterType.Fire, "phase": "mid", "msg": "Cildinde ciddi yanıklar oluştu!", "item": "med_kit", "damage": 50, "id": "fi_4" },
-	{ "disaster": DisasterType.Fire, "phase": "late", "msg": "Çıkış yolu alevlerle kapandı, karanlık ve duman basıyor!", "item": "flash_light", "damage": 40, "id": "fi_5" },
-	{ "disaster": DisasterType.Fire, "phase": "late", "msg": "İtfaiye ekiplerine yerini bildirmelisin!", "item": "radio", "damage": 40, "id": "fi_6" }
+	{ "disaster": DisasterType.Fire, "phase": "early", "msg": "Duman pencerelerden içeri doluyor, boğuluyorsun!", "item": "mask", "damage": 65, "id": "fi_1" },
+	{ "disaster": DisasterType.Fire, "phase": "early", "msg": "Kıvılcımlar üstüne sıçramaya başladı!", "item": "fire_blanket", "damage": 70, "id": "fi_2" },
+	{ "disaster": DisasterType.Fire, "phase": "mid", "msg": "Alevler etrafı sardı, aşırı sıcaklıktan kavruluyorsun!", "item": "water", "damage": 60, "id": "fi_3" },
+	{ "disaster": DisasterType.Fire, "phase": "mid", "msg": "Cildinde ciddi yanıklar oluştu!", "item": "med_kit", "damage": 70, "id": "fi_4" },
+	{ "disaster": DisasterType.Fire, "phase": "late", "msg": "Çıkış yolu alevlerle kapandı, karanlık ve duman basıyor!", "item": "flash_light", "damage": 55, "id": "fi_5" },
+	{ "disaster": DisasterType.Fire, "phase": "late", "msg": "İtfaiye ekiplerine yerini bildirmelisin!", "item": "radio", "damage": 55, "id": "fi_6" }
 ]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

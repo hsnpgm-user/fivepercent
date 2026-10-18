@@ -16,11 +16,19 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_p231s")
 
+[node name="Time" type="TextureProgressBar" parent="." unique_id=803765550]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+value = 100.0
+fill_mode = 5
+
 [node name="Backpack" type="AudioStreamPlayer2D" parent="." unique_id=1064595489]
 stream = ExtResource("2_0skrd")
 
 [node name="Alarm" type="AudioStreamPlayer2D" parent="." unique_id=1524100677]
 stream = ExtResource("3_2kngy")
+volume_db = -7.0
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=123055030]
 layout_mode = 0
@@ -29,7 +37,7 @@ offset_bottom = 40.0
 texture = ExtResource("4_2kngy")
 
 [node name="PrepareTime" type="Timer" parent="." unique_id=143126219]
-wait_time = 7.0
+wait_time = 10.0
 
 [node name="Countdown" type="Label" parent="." unique_id=474741670]
 layout_mode = 0
@@ -72,37 +80,37 @@ alignment = 1
 [node name="SlotPoints" type="Node2D" parent="." unique_id=1189314194]
 
 [node name="1" type="Marker2D" parent="SlotPoints" unique_id=1571407046]
-position = Vector2(293, 292)
+position = Vector2(293, 306)
 
 [node name="2" type="Marker2D" parent="SlotPoints" unique_id=986254691]
-position = Vector2(492, 314)
+position = Vector2(492, 328)
 
 [node name="3" type="Marker2D" parent="SlotPoints" unique_id=625249147]
-position = Vector2(772, 368)
+position = Vector2(822, 373)
 
 [node name="4" type="Marker2D" parent="SlotPoints" unique_id=1685811949]
-position = Vector2(942, 367)
+position = Vector2(1084, 370)
 
 [node name="5" type="Marker2D" parent="SlotPoints" unique_id=297843384]
-position = Vector2(1143, 365)
+position = Vector2(1426, 327)
 
 [node name="6" type="Marker2D" parent="SlotPoints" unique_id=353959325]
-position = Vector2(1417, 335)
+position = Vector2(1624, 310)
 
 [node name="7" type="Marker2D" parent="SlotPoints" unique_id=531622883]
-position = Vector2(1588, 306)
+position = Vector2(305, 476)
 
 [node name="8" type="Marker2D" parent="SlotPoints" unique_id=53859723]
-position = Vector2(286, 478)
+position = Vector2(490, 485)
 
 [node name="9" type="Marker2D" parent="SlotPoints" unique_id=396864440]
-position = Vector2(487, 484)
+position = Vector2(723, 564)
 
 [node name="10" type="Marker2D" parent="SlotPoints" unique_id=1766419811]
-position = Vector2(778, 566)
+position = Vector2(1175, 555)
 
 [node name="11" type="Marker2D" parent="SlotPoints" unique_id=1001366813]
-position = Vector2(957, 561)
+position = Vector2(1424, 492)
 
 [node name="12" type="Marker2D" parent="SlotPoints" unique_id=329048698]
-position = Vector2(1162, 559)
+position = Vector2(1605, 490)
