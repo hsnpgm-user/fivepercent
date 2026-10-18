@@ -7,12 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://bi07foxygbgai" path="res://Assets/UI/hunger bar.png" id="4_2fron"]
 [ext_resource type="Texture2D" uid="uid://516njmtl6y0" path="res://Assets/UI/condition s button clicked.png" id="4_5eh6y"]
 [ext_resource type="Texture2D" uid="uid://h50v11scnadk" path="res://Assets/UI/heath bar.png" id="5_tikr8"]
-[ext_resource type="Texture2D" uid="uid://du71ktlgkmm0c" path="res://Assets/UI/warning pop up message success.png" id="6_2fron"]
-[ext_resource type="Texture2D" uid="uid://bkhttax7ln0l8" path="res://Assets/UI/warning pop up message.png" id="6_rl3tg"]
+[ext_resource type="Texture2D" uid="uid://b5mlqdhdnacew" path="res://Assets/UI/warning_pop_up_message_success.png" id="6_2fron"]
+[ext_resource type="Texture2D" uid="uid://cm683yfkdf6is" path="res://Assets/UI/warning_pop_up_message.png" id="7_tikr8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ltx6v"]
 font_size = 25
 font_color = Color(0, 0, 0, 1)
+outline_size = 3
 
 [sub_resource type="LabelSettings" id="LabelSettings_1e0w3"]
 font_size = 50
@@ -117,7 +118,7 @@ offset_bottom = 813.0
 texture = ExtResource("6_2fron")
 expand_mode = 2
 
-[node name="SituationLabel" type="Label" parent="UI/SituationTexture" unique_id=372985048]
+[node name="SituationLabel2" type="Label" parent="UI/SituationTexture" unique_id=372985048]
 custom_maximum_size = Vector2(800, 200)
 layout_mode = 1
 anchors_preset = 8
@@ -129,6 +130,25 @@ offset_left = -282.0
 offset_top = -137.0
 offset_right = 268.0
 offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_ltx6v")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="SituationLabel" type="Label" parent="UI/SituationTexture" unique_id=1034909813]
+custom_maximum_size = Vector2(550, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -281.0
+offset_top = -134.0
+offset_right = 269.0
+offset_bottom = 66.0
 grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_ltx6v")
@@ -156,7 +176,7 @@ offset_left = 113.0
 offset_top = 528.0
 offset_right = 713.0
 offset_bottom = 828.0
-texture = ExtResource("6_rl3tg")
+texture = ExtResource("7_tikr8")
 expand_mode = 2
 
 [node name="EventLabel" type="Label" parent="UI/EventTexture" unique_id=307200246]

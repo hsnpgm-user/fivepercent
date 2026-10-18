@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkhttax7ln0l8"
-path="res://.godot/imported/warning pop up message.png-d61115d98ed7dcb9fa1d6a1c7558f078.ctex"
+uid="uid://cm683yfkdf6is"
+path="res://.godot/imported/warning_pop_up_message.png-5814c3d5ee4521a97af9dfe8c915ccc1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/warning pop up message.png"
-dest_files=["res://.godot/imported/warning pop up message.png-d61115d98ed7dcb9fa1d6a1c7558f078.ctex"]
+source_file="res://Assets/UI/warning_pop_up_message.png"
+dest_files=["res://.godot/imported/warning_pop_up_message.png-5814c3d5ee4521a97af9dfe8c915ccc1.ctex"]
 
 [params]
 

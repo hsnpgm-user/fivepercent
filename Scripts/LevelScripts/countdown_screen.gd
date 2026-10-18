@@ -2,7 +2,6 @@ extends Control
 
 var time_left: float = 0
 
-@onready var disaster_name: Label = $AfterCoundown/DisasterName
 @onready var before_countdown: Control = $BeforeCountdown
 @onready var after_countdown: Control = $AfterCoundown
 @onready var custom_timer: Timer = $WaitTime
@@ -53,16 +52,12 @@ func update_disaster_visual():
 	match GameManager.current_disaster:
 		GameManager.DisasterType.Earthquake:
 			disaster_texture_rect.texture = GameManager.tex_earthquake_pre
-			disaster_name.text = "Earthquake"
 			
 		GameManager.DisasterType.Flood:
 			disaster_texture_rect.texture = GameManager.tex_flood_pre
-			disaster_name.text = "Flood"
 			
 		GameManager.DisasterType.Avalanche:
 			disaster_texture_rect.texture = GameManager.tex_avalanche_pre
-			disaster_name.text = "Avalanche"
 			
 		GameManager.DisasterType.Fire:
 			disaster_texture_rect.texture = GameManager.tex_fire_pre
-			disaster_name.text = "Fire"

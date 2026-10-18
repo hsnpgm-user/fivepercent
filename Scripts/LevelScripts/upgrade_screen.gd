@@ -48,7 +48,7 @@ func update_ui() -> void:
 	# 3. Maksimum Kapasite veya Maliyet Kontrolü
 	if GameManager.max_bag_slot_count >= MAX_BAG_CAPACITY:
 		if cost_label:
-			cost_label.text = "✨ Max Bag Capasity Reached!"
+			cost_label.text = "Max Bag Capasity Reached!"
 		if upgrade_button:
 			upgrade_button.disabled = true
 	else:

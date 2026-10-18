@@ -7,9 +7,6 @@
 font_size = 200
 outline_size = 20
 
-[sub_resource type="LabelSettings" id="LabelSettings_4cp1u"]
-font_size = 57
-
 [node name="CountdownScreen" type="Control" unique_id=1474994869]
 layout_mode = 3
 anchors_preset = 0
@@ -63,23 +60,9 @@ offset_bottom = 1080.0
 
 [node name="TextureRect" type="TextureRect" parent="AfterCoundown" unique_id=10385069]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-expand_mode = 3
-stretch_mode = 3
-
-[node name="DisasterName" type="Label" parent="AfterCoundown" unique_id=112568720]
-layout_mode = 0
-offset_left = 804.0
-offset_top = 916.0
-offset_right = 1088.0
-offset_bottom = 994.0
-text = "Avalanche"
-label_settings = SubResource("LabelSettings_4cp1u")
-horizontal_alignment = 1
-vertical_alignment = 1
+expand_mode = 2

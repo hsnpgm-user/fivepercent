@@ -17,6 +17,11 @@ font_size = 60
 outline_size = 4
 shadow_size = 26
 
+[sub_resource type="LabelSettings" id="LabelSettings_2oxtv"]
+font_size = 30
+outline_size = 4
+shadow_size = 26
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qs4b4"]
 texture = ExtResource("3_l5wmx")
 
@@ -127,11 +132,11 @@ texture = ExtResource("4_gmf5r")
 
 [node name="StatusMsg" type="Label" parent="." unique_id=1629961906]
 layout_mode = 0
-offset_left = 1354.0
-offset_top = 576.0
-offset_right = 1355.0
-offset_bottom = 618.0
-label_settings = SubResource("LabelSettings_g1a74")
+offset_left = 153.0
+offset_top = 732.0
+offset_right = 154.0
+offset_bottom = 815.0
+label_settings = SubResource("LabelSettings_2oxtv")
 horizontal_alignment = 1
 vertical_alignment = 1
 

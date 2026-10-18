@@ -52,15 +52,24 @@ func _ready() -> void:
 	GameManager.player_stats = { "hunger": 100, "thirst": 100, "temperature": 100, "health": 100 }
 	change_background()
 	play_disaster_ambient()
+	
+	# Başlangıçta yazılar ve arka planları kesin olarak gizliyoruz
+	if event_tex: event_tex.visible = false
+	if sit_tex: sit_tex.visible = false
+	if event_label: event_label.visible = false
+	if situation_label: situation_label.text = ""
+
 	if health_bar: health_bar.max_value = 100
 	if thirst_bar: thirst_bar.max_value = 100
 	if hunger_bar: hunger_bar.max_value = 100
 	if temp_bar: temp_bar.max_value = 100
 	update_radial_stats_ui()
+	
 	current_run_events = GameManager.event_pool.filter(
 		func(e): return e["disaster"] == GameManager.current_disaster
 	)
 	current_run_events.shuffle()
+	
 	event_timer.timeout.connect(_on_event_timer_timeout)
 	event_timer.start()
 	in_game_time_prepare(true, GAME_DURATION, good_ending)
@@ -86,7 +95,6 @@ func _process(delta: float) -> void:
 		bad_ending()
 
 func update_radial_stats_ui() -> void:
-	# Her bir bar için akıcı (smooth) geçiş animasyonu (Tween) oluşturuyoruz
 	var tween = create_tween().set_parallel(true).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	
 	if health_bar:
@@ -123,6 +131,7 @@ func _on_stats_tick():
 		if not event_active:
 			event_label.text = "Vital signs critical!"
 			event_label.visible = true
+			if event_tex: event_tex.visible = true
 	
 	update_radial_stats_ui()
 
@@ -155,6 +164,7 @@ func _on_sparse_event_trigger():
 	event_active = true
 	event_label.text = chosen_crisis["msg"]
 	event_label.visible = true
+	if event_tex: event_tex.visible = true
 	
 	await get_tree().create_timer(6.0).timeout
 	if event_active:
@@ -162,10 +172,12 @@ func _on_sparse_event_trigger():
 		GameManager.player_stats["health"] = max(0, GameManager.player_stats["health"] - 10)
 		event_label.text = "Condition worsened!"
 		event_label.visible = true
+		if event_tex: event_tex.visible = true
 		update_radial_stats_ui()
 		await get_tree().create_timer(2.0).timeout
 		event_label.text = ""
 		event_label.visible = false
+		if event_tex: event_tex.visible = false
 
 # ---------- Puan ----------
 
@@ -217,6 +229,8 @@ func bad_ending() -> void:
 	if event_label:
 		event_label.text = ""
 		event_label.visible = false
+	if event_tex: event_tex.visible = false
+	if sit_tex: sit_tex.visible = false
 	
 	var advice = "Rough run! Poor preparation or wrong items cost you your life."
 	show_game_summary(false, "You Tried Your Best!", advice)
@@ -283,7 +297,7 @@ func _on_slot_clicked(slot_type: String, index: int) -> void:
 				var val = effect_data["val"]
 				
 				if is_correct_item_for_event and val < 0:
-					continue # Kriz anında doğru eşyaysa olumsuz debuff'ı yok sayar!
+					continue 
 				
 				if target_stat == "health":
 					if item_id == "med_kit":
@@ -309,16 +323,17 @@ func _on_slot_clicked(slot_type: String, index: int) -> void:
 	update_radial_stats_ui()
 
 	# --- HİKAYESEL GÖRSEL GERİ BİLDİRİM ---
-	var story_text = get_item_narrative(item_id)
 	
 	if is_correct_item_for_event:
-		situation_label.text = "Crisis Resolved! (+100 Points)\n " + story_text
-		sit_tex.visible = true
+		situation_label.text = "Crisis Resolved! (+100 Points)"
+		if sit_tex: sit_tex.visible = true
 		event_label.text = ""
 		event_label.visible = false
+		if event_tex: event_tex.visible = false
 	else:
+		var story_text = get_item_narrative(item_id)
 		situation_label.text = story_text
-		sit_tex.visible = true
+		if sit_tex: sit_tex.visible = true
 	
 	GameManager.bag_slots[index] = {}
 	draw_ingame_bag()
@@ -327,7 +342,7 @@ func _on_slot_clicked(slot_type: String, index: int) -> void:
 	
 	if not event_active and not game_over:
 		situation_label.text = ""
-		sit_tex.visible = false
+		if sit_tex: sit_tex.visible = false
 
 
 # ---------- Kriz sistemi ----------
@@ -358,6 +373,7 @@ func _on_event_timer_timeout() -> void:
 
 	event_label.text = "CRISIS: " + active_event["msg"]
 	event_label.visible = true
+	if event_tex: event_tex.visible = true
 
 	await get_tree().create_timer(EVENT_REACTION_TIME).timeout
 
@@ -370,6 +386,7 @@ func _on_event_timer_timeout() -> void:
 	GameManager.player_stats["health"] = max(0, GameManager.player_stats["health"] - dmg)
 	event_label.text = "Crisis not handled in time! (-" + str(dmg) + " Health)"
 	event_label.visible = true
+	if event_tex: event_tex.visible = true
 	
 	update_radial_stats_ui()
 	
@@ -381,6 +398,7 @@ func _on_event_timer_timeout() -> void:
 	if not event_active and not game_over:
 		event_label.text = ""
 		event_label.visible = false
+		if event_tex: event_tex.visible = false
 
 func change_background():
 	match GameManager.current_disaster:
@@ -398,7 +416,10 @@ func change_background():
 			background.texture = GameManager.tex_avalanche
 
 func show_game_summary(is_survived: bool, title_text: String, advice_text: String):
-	event_label.visible = false
+	if event_label: event_label.visible = false
+	if event_tex: event_tex.visible = false
+	if sit_tex: sit_tex.visible = false
+	
 	var earned_score = calculate_detailed_points(is_survived)
 	
 	end_game_screen.visible = true
@@ -408,17 +429,16 @@ func show_game_summary(is_survived: bool, title_text: String, advice_text: Strin
 		summary_title_label.text = title_text
 		
 	if summary_label_1:
-		summary_label_1.text = "⏱️ Survival Time: " + str(int(elapsed_time)) + " Saniye"
+		summary_label_1.text = "⏱️ Survival Time: " + str(int(elapsed_time)) + " Seconds"
 	if summary_label_2:
-		summary_label_2.text = "✅ Correct Choice: " + str(successful_interventions) + " Adet"
+		summary_label_2.text = "✅ Correct Choice: " + str(successful_interventions)
 	if summary_label_3:
-		summary_label_3.text = "⭐ Successful Interventions: +" + str(earned_score)
+		summary_label_3.text = "⭐ Points Earned: +" + str(earned_score)
 	if summary_label_4:
 		summary_label_4.text = "🏆 Total Score: " + str(GameManager.survival_points)
 	if summary_label_5:
 		summary_label_5.text = advice_text
 
-# --- BU FONKSİYONU ESKİSİYLE DEĞİŞTİR ---
 func get_item_narrative(item_id: String) -> String:
 	var disaster = GameManager.current_disaster
 	
@@ -490,13 +510,11 @@ func play_item_sound(item_id: String) -> void:
 		item_audio_player.stream = audio_stream
 		item_audio_player.play()
 	else:
-		# Eğer .wav bulamazsa .ogg dener
 		var ogg_path = "res://Assets/Audio/SFX/" + get_sound_filename(item_id) + ".ogg"
 		if ResourceLoader.exists(ogg_path):
 			item_audio_player.stream = load(ogg_path)
 			item_audio_player.play()
 
-# Hangi eşyanın hangi ses dosyasına karşılık geldiğini eşler
 func get_sound_filename(item_id: String) -> String:
 	match item_id:
 		"water": return "water_drink"
@@ -528,7 +546,6 @@ func play_disaster_ambient() -> void:
 	var sound_path = "res://Assets/Audio/Ambient/" + ambient_filename + ".mp3"
 	if ResourceLoader.exists(sound_path):
 		var stream = load(sound_path)
-		# Eğer ses dosyasının kendi içinde loop özelliği yoksa kodla da döngüye alabiliriz
 		if stream is AudioStreamOggVorbis or stream is AudioStreamMP3:
 			stream.loop = true
 			
