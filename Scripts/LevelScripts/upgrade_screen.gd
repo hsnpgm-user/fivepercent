@@ -39,37 +39,37 @@ func update_ui() -> void:
 	
 	# 1. Toplam Skor Gösterimi
 	if total_score_label:
-		total_score_label.text = "🏆 TOPLAM SKOR: " + str(GameManager.survival_points)
+		total_score_label.text = "🏆 Total Score: " + str(GameManager.survival_points)
 		
 	# 2. Çanta Kapasitesi Gösterimi
 	if capacity_info_label:
-		capacity_info_label.text = "📦 Çanta Kapasitesi: " + str(GameManager.max_bag_slot_count) + " / " + str(MAX_BAG_CAPACITY) + " Slot"
+		capacity_info_label.text = "📦 Bag Capasity: " + str(GameManager.max_bag_slot_count) + " / " + str(MAX_BAG_CAPACITY) + " Slot"
 
 	# 3. Maksimum Kapasite veya Maliyet Kontrolü
 	if GameManager.max_bag_slot_count >= MAX_BAG_CAPACITY:
 		if cost_label:
-			cost_label.text = "✨ Maksimum Çanta Seviyesine Ulaşıldı!"
+			cost_label.text = "✨ Max Bag Capasity Reached!"
 		if upgrade_button:
 			upgrade_button.disabled = true
-			upgrade_button.text = "MAKSİMUM SEVİYE"
+			upgrade_button.text = "MAX LEVEL"
 	else:
 		if cost_label:
-			cost_label.text = "💰 Yükseltme Maliyeti: " + str(current_upgrade_cost) + " Puan"
+			cost_label.text = "💰 Upgrade Price: " + str(current_upgrade_cost) + " Points"
 		
 		# Puan yetiyorsa butonu aktif et, yetmiyorsa pasifleştir
 		if upgrade_button:
 			if GameManager.survival_points >= current_upgrade_cost:
 				upgrade_button.disabled = false
-				upgrade_button.text = "🎒 ÇANTAYI BÜYÜT (+1 SLOT)"
+				upgrade_button.text = "UPGRADE BAG CAPASITY (+1 SLOT)"
 			else:
 				upgrade_button.disabled = true
-				upgrade_button.text = "YETERSİZ PUAN"
+				upgrade_button.text = "NOT ENOUGH POINTS"
 
 # --- ÇANTA YÜKSELTME BUTONU ---
 func _on_upgrade_button_pressed() -> void:
 	# Çift Kontrol: Kapasite ve Puan
 	if GameManager.max_bag_slot_count >= MAX_BAG_CAPACITY:
-		show_status("Maksimum kapasiteye zaten ulaştın!", false)
+		show_status("Bag is max level", false)
 		return
 
 	if GameManager.survival_points >= current_upgrade_cost:
@@ -80,10 +80,10 @@ func _on_upgrade_button_pressed() -> void:
 		GameManager.upgrade_bag_capasity()
 		
 		# Görsel mesaj ver ve arayüzü güncelle
-		show_status("✅ Çanta Kapasitesi Başarıyla Artırıldı!", true)
+		show_status("✅ Bag capasity increased!", true)
 		update_ui()
 	else:
-		show_status("❌ Yetersiz Puan! Daha fazla afet atlatmalısın.", false)
+		show_status("❌ Not enough points!", false)
 
 # --- SONRAKİ TURA GEÇİŞ BUTONU ---
 func _on_next_run_button_pressed() -> void:

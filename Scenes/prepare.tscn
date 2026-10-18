@@ -16,13 +16,6 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_p231s")
 
-[node name="Time" type="TextureProgressBar" parent="." unique_id=803765550]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-value = 100.0
-fill_mode = 5
-
 [node name="Backpack" type="AudioStreamPlayer2D" parent="." unique_id=1064595489]
 stream = ExtResource("2_0skrd")
 

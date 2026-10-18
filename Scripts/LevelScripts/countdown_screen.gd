@@ -46,7 +46,6 @@ func change_scene():
 	get_tree().change_scene_to_file("res://Scenes/prepare.tscn")
 
 func _on_main_timer_timeout():
-	print("Süre bitti!")
 	label.text = "Time is Up"
 	GameManager.select_random_disaster()
 	prepare_custom_timer(0.5, true, switch_to_preview_screen)

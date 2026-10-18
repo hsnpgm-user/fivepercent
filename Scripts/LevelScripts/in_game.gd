@@ -3,8 +3,8 @@ extends Node2D
 const GAME_DURATION: float = 90
 const SURVIVE_TIME: float = 90
 const EVENT_REACTION_TIME: float = 8
-const MID_PHASE_START: float = 20
-const LATE_PHASE_START: float = 40
+const MID_PHASE_START: float = 30
+const LATE_PHASE_START: float = 60
 
 @onready var item_audio_player: AudioStreamPlayer2D = $ItemAudioPlayer
 @onready var disaster_audio_player: AudioStreamPlayer2D = $DisasterAudioPlayer
@@ -63,7 +63,7 @@ func _ready() -> void:
 	in_game_time_prepare(true, GAME_DURATION, good_ending)
 	draw_ingame_bag()
 	
-	survival_stats_timer.wait_time = 2.5
+	survival_stats_timer.wait_time = 1.7
 	survival_stats_timer.timeout.connect(_on_stats_tick)
 	survival_stats_timer.start()
 	
@@ -118,7 +118,7 @@ func _on_stats_tick():
 	if GameManager.player_stats["thirst"] == 0 or GameManager.player_stats["hunger"] == 0 or GameManager.player_stats["temperature"] == 0:
 		GameManager.player_stats["health"] = max(0, GameManager.player_stats["health"] - 10)
 		if not event_active:
-			event_label.text = "⚠️ Vücut sınırda! Açlık/Susuzluk/Isı tükeniyor!"
+			event_label.text = "⚠️ Vital signs critical!"
 	
 	update_radial_stats_ui()
 
@@ -128,22 +128,22 @@ func _on_sparse_event_trigger():
 	var possible_crises = []
 	
 	if GameManager.player_stats["thirst"] < 35:
-		possible_crises.append({ "msg": "Kritik Susuzluk! Boğazın kurumaya başladı.", "stat_effect": "thirst" })
+		possible_crises.append({ "msg": "Critical Thirst! Your throat is getting dry.", "stat_effect": "thirst" })
 	if GameManager.player_stats["temperature"] < 35:
-		possible_crises.append({ "msg": "Şiddetli Titreme! Donmak üzeresin.", "stat_effect": "temperature" })
+		possible_crises.append({ "msg": "Severe Shivering! You are about to freeze.", "stat_effect": "temperature" })
 	if GameManager.player_stats["hunger"] < 35:
-		possible_crises.append({ "msg": "Miden kazınıyor, gücün kesiliyor.", "stat_effect": "hunger" })
+		possible_crises.append({ "msg": "Stomach growling, your strength is fading.", "stat_effect": "hunger" })
 		
 	if possible_crises.is_empty():
 		match GameManager.current_disaster:
 			GameManager.DisasterType.Avalanche:
-				possible_crises.append({ "msg": "Tipiden ötürü çadırın sarsılıyor!", "stat_effect": "none" })
+				possible_crises.append({ "msg": "Ground is shaking violently from the blizzard!", "stat_effect": "none" })
 			GameManager.DisasterType.Earthquake:
-				possible_crises.append({ "msg": "Güçlü bir artçı sarsıntı vurdu!", "stat_effect": "none" })
+				possible_crises.append({ "msg": "A strong aftershock has struck!", "stat_effect": "none" })
 			GameManager.DisasterType.Flood:
-				possible_crises.append({ "msg": "Su seviyesi hızla yükseliyor!", "stat_effect": "none" })
+				possible_crises.append({ "msg": "Water levels are rising rapidly!", "stat_effect": "none" })
 			GameManager.DisasterType.Fire:
-				possible_crises.append({ "msg": "Duman yoğunluğu arttı, gözlerin yanıyor!", "stat_effect": "none" })
+				possible_crises.append({ "msg": "Smoke density increased, your eyes are burning!", "stat_effect": "none" })
 				
 	possible_crises.shuffle()
 	var chosen_crisis = possible_crises[0]
@@ -155,7 +155,7 @@ func _on_sparse_event_trigger():
 	if event_active:
 		event_active = false
 		GameManager.player_stats["health"] = max(0, GameManager.player_stats["health"] - 10)
-		event_label.text = "❌ Durum kötüleşti! Can azaldı."
+		event_label.text = "❌ Condition worsened!"
 		update_radial_stats_ui()
 		await get_tree().create_timer(2.0).timeout
 		event_label.text = ""
@@ -199,8 +199,8 @@ func prepare_custom_timer(waiting_time: float, is_one_shot: bool, on_timeout_cal
 func good_ending() -> void:
 	if game_over: return
 	_finish_run()
-	var advice = "Harika hazırlık! Eşyaları doğru kullanarak afeti atlattın."
-	show_game_summary(true, "AFETTEN SAĞ KURTULDUN!", advice)
+	var advice = "Great preparation! You survived the disaster by using items correctly."
+	show_game_summary(true, "YOU SURVIVED THE DISASTER!", advice)
 
 
 func bad_ending() -> void:
@@ -210,8 +210,8 @@ func bad_ending() -> void:
 	if event_label:
 		event_label.text = ""
 	
-	var advice = "Zorlu turdu! Eksik hazırlık veya ters tepen eşyalar can yaktı."
-	show_game_summary(false, "NAKAVT OLDUN...", advice)
+	var advice = "Rough run! Poor preparation or wrong items cost you your life."
+	show_game_summary(false, "You Tried Your Best!", advice)
 
 
 func _finish_run() -> void:
@@ -304,14 +304,13 @@ func _on_slot_clicked(slot_type: String, index: int) -> void:
 	var story_text = get_item_narrative(item_id)
 	
 	if is_correct_item_for_event:
-		situation_label.text = "✅ Kriz Çözüldూ! (+100 Puan)\n📖 " + story_text
+		situation_label.text = "✅ Crisis Resolved! (+100 Points)\n📖 " + story_text
 		event_label.text = ""
 	else:
 		situation_label.text = "📖 " + story_text
-	
-	var tween_label = create_tween()
-	tween_label.tween_interval(3.0)
-	tween_label.tween_callback(func(): situation_label.texte = "")
+		var tween_label = create_tween()
+		tween_label.tween_interval(5.0)
+		tween_label.tween_callback(func(): situation_label.text = "")
 	
 	GameManager.bag_slots[index] = {}
 	draw_ingame_bag()
@@ -348,7 +347,7 @@ func _on_event_timer_timeout() -> void:
 	event_serial += 1
 	var my_serial := event_serial
 
-	event_label.text = "⚠️ KRİZ: " + active_event["msg"]
+	event_label.text = "⚠️ CRISIS: " + active_event["msg"]
 
 	await get_tree().create_timer(EVENT_REACTION_TIME).timeout
 
@@ -359,7 +358,7 @@ func _on_event_timer_timeout() -> void:
 	var dmg = active_event["damage"]
 	
 	GameManager.player_stats["health"] = max(0, GameManager.player_stats["health"] - dmg)
-	event_label.text = "❌ Krize zamanında müdahale edilmedi! (-" + str(dmg) + " Can)"
+	event_label.text = "❌ Crisis not handled in time! (-" + str(dmg) + " Health)"
 	
 	update_radial_stats_ui()
 	
@@ -397,15 +396,15 @@ func show_game_summary(is_survived: bool, title_text: String, advice_text: Strin
 		summary_title_label.text = title_text
 		
 	if summary_label_1:
-		summary_label_1.text = "⏱️ Dayanma Süresi: " + str(int(elapsed_time)) + " Saniye"
+		summary_label_1.text = "⏱️ Survival Time: " + str(int(elapsed_time)) + " Saniye"
 	if summary_label_2:
-		summary_label_2.text = "✅ Başarılı Müdahale: " + str(successful_interventions) + " Adet"
+		summary_label_2.text = "✅ Correct Choice: " + str(successful_interventions) + " Adet"
 	if summary_label_3:
-		summary_label_3.text = "⭐ Bu Tur Kazanılan Puan: +" + str(earned_score)
+		summary_label_3.text = "⭐ Successful Interventions: +" + str(earned_score)
 	if summary_label_4:
-		summary_label_4.text = "🏆 Toplam Skor: " + str(GameManager.survival_points)
+		summary_label_4.text = "🏆 Total Score: " + str(GameManager.survival_points)
 	if summary_label_5:
-		summary_label_5.text = "💡 Tavsiye: " + advice_text
+		summary_label_5.text = advice_text
 
 # --- BU FONKSİYONU ESKİSİYLE DEĞİŞTİR ---
 func get_item_narrative(item_id: String) -> String:
@@ -414,61 +413,61 @@ func get_item_narrative(item_id: String) -> String:
 	match item_id:
 		"water":
 			if disaster == GameManager.DisasterType.Avalanche:
-				return "Dondurucu soğukta içtiğin su, içten içe vücut ısını düşürdü. Yanlış bir tercih miydi?"
+				return "Drinking water in the freezing cold lowered your body temperature from within. Was it a wrong choice?"
 			elif disaster == GameManager.DisasterType.Flood:
-				return "Etrafı çamurlu sular basmışken bu temiz suyu yudumlamak değerliydi, boğazın yumuşadı."
+				return "Sipping this clean water while muddy waters surrounded you was valuable, your throat softened."
 			else:
-				return "Mataradaki serin suyu yudumladın. Kuruyan boğazın rahatladı, zihnin biraz berraklaştı."
+				return "You sipped the cool water from your bottle. Your dry throat relaxed, your mind cleared up a bit."
 				
 		"con_foods":
 			if disaster == GameManager.DisasterType.Fire:
-				return "Aşırı sıcak havada bu konserve ağır geldi, miden bulandı ve susuzluğun arttı."
+				return "In the scorching hot weather, this canned food felt heavy, it upset your stomach and increased your thirst."
 			elif disaster == GameManager.DisasterType.Avalanche:
-				return "Dondurucu soğukta konserve gıdayı açıp yedin; aldığın kalori vücut direncini ayakta tuttu."
+				return "You opened and ate the canned food in the freezing cold; the calories kept your body stamina alive."
 			else:
-				return "Konserve kutusunu açıp karnını doyurdun. Enerjin yerine geldi."
+				return "You opened the can and satisfied your hunger. Your energy is back."
 				
 		"flash_light":
 			if disaster == GameManager.DisasterType.Fire:
-				return "Alevlerin aydınlettiği ortamda feneri açmak gereksizdi; dumanla birleşince gözlerini yaktı."
+				return "Turning on the flashlight in an environment lit by flames was unnecessary; mixed with smoke, it burned your eyes."
 			else:
-				return "Fenerin huzmesi karanlık köşeleri aydınlattı. Çevreni net görebilmek korkunu hafifletti."
+				return "The beam of the flashlight illuminated dark corners. Being able to see your surroundings clearly eased your fear."
 				
 		"med_kit":
-			return "İlk yardım setini açıp yarana müdahale ettin. Akan kan durdu, gücün yerine gelmeye başladı."
+			return "You opened the first aid kit and treated your wound. The bleeding stopped, your strength began to return."
 				
 		"fire_blanket":
 			if disaster == GameManager.DisasterType.Fire:
-				return "Yangın battaniyesine sarılarak alevlerin ve sıcağın etkisinden korundun. Hayat kurtarıcı hamle!"
+				return "You wrapped yourself in the fire blanket and protected yourself from flames and heat. A life-saving move!"
 			else:
-				return "Yanmaz örtüyü etrafına örttün, şu anlık çok kritik bir işlevi olmasa da güvende hissettirdi."
+				return "You draped the fire blanket around you, while it might not have a critical function right now, it made you feel safe."
 				
 		"thermal_blanket":
 			if disaster == GameManager.DisasterType.Avalanche:
-				return "Termal battaniyeye sıkıca sarındın; donmaktan son anda kurtuldun, vücut ısın dengeleniyor."
+				return "You wrapped tightly in the thermal blanket; you narrowly escaped freezing, your body temperature is balancing."
 			else:
-				return "Termal battaniyeyi üzerine örttün."
+				return "You draped the thermal blanket over yourself."
 				
 		"rubber_boots":
 			if disaster == GameManager.DisasterType.Flood:
-				return "Su geçirmez çizmeleri giydin; yükselen suların içinde güvenle adım atıyorsun!"
+				return "You put on the waterproof boots; you are stepping safely in the rising waters!"
 			else:
-				return "Çizmeleri ayağına geçirdin."
+				return "You slipped on your boots."
 				
 		"mask":
 			if disaster == GameManager.DisasterType.Fire:
-				return "Maskeyi yüzüne taktın. Yoğun duman filtreden süzüldü, ciğerlerin bayram etti!"
+				return "You put on the mask. The dense smoke was filtered out, your lungs relaxed!"
 			else:
-				return "Toz bulutunun ortasında maske sayesinde rahatça nefes alabildin."
+				return "In the dust cloud, the mask allowed you to breathe comfortably."
 				
 		"radio":
-			return "Telsizden gelen cızırtılı anonsları dinledin. Dış dünyadan gelen ses umut oldu."
+			return "You listened to the static-filled broadcasts coming from the radio. The voice from the outside world brought hope."
 				
 		"wistel":
-			return "Düvele güçlüce üfledin; sesin uzaklardan yankılandı, ekiplere yerini belli ettin!"
+			return "You blew the whistle strongly; your sound echoed from afar, signaling your location to rescue teams!"
 			
 		_:
-			return "Eşyayı dikkatle kullandın. Durumunda ufak bir değişim hissediliyor."
+			return "You used the item carefully. A slight change is felt in your condition."
 
 func play_item_sound(item_id: String) -> void:
 	if not item_audio_player: return

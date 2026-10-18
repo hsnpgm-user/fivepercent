@@ -133,37 +133,76 @@ var all_item_pool: Array = [
 
 # --- BU DİZİYİ GAMEMANAGER İÇİNDEKİ ESKİ event_pool İLE DEĞİŞTİR ---
 var event_pool: Array = [
+	# ==========================================
 	# --- DEPREM (EARTHQUAKE) ---
-	{ "disaster": DisasterType.Earthquake, "phase": "early", "msg": "Sarsıntı başladı! Eşyalar devriliyor, etraf karanlık.", "item": "flash_light", "damage": 60, "id": "eq_1" },
-	{ "disaster": DisasterType.Earthquake, "phase": "early", "msg": "Toz bulutu yayıldı, nefes almak zorlaşıyor!", "item": "mask", "damage": 55, "id": "eq_2" },
-	{ "disaster": DisasterType.Earthquake, "phase": "mid", "msg": "Hafif yaralandın, kanama var!", "item": "med_kit", "damage": 70, "id": "eq_3" },
-	{ "disaster": DisasterType.Earthquake, "phase": "mid", "msg": "Enkaz altındasın! Sesini dışarıya duyurman lazım.", "item": "wistel", "damage": 50, "id": "eq_4" },
-	{ "disaster": DisasterType.Earthquake, "phase": "late", "msg": "Çaresiz bir bekleyiş başladı, boğazın kurudu!", "item": "water", "damage": 65, "id": "eq_5" },
-	{ "disaster": DisasterType.Earthquake, "phase": "late", "msg": "Dış dünya ile bağın koptu, bilgi alamıyorsun!", "item": "radio", "damage": 55, "id": "eq_6" },
+	# ==========================================
+	# Early (Erken Aşama)
+	{ "disaster": DisasterType.Earthquake, "phase": "early", "msg": "The sudden earthquake turned off all the lights, and now you cannot see anything in the dark.", "item": "flash_light", "damage": 45, "id": "eq_1" },
+	{ "disaster": DisasterType.Earthquake, "phase": "early", "msg": "Dust from the collapsed buildings filled the air, making it very difficult to breathe.", "item": "mask", "damage": 45, "id": "eq_2" },
+	{ "disaster": DisasterType.Earthquake, "phase": "early", "msg": "The strong shaking broke glass and scattered debris, which cut your hand.", "item": "med_kit", "damage": 50, "id": "eq_3" },
+	
+	# Mid (Orta Aşama)
+	{ "disaster": DisasterType.Earthquake, "phase": "mid", "msg": "You are trapped under heavy concrete, so you must call out loudly for help.", "item": "wistel", "damage": 55, "id": "eq_4" },
+	{ "disaster": DisasterType.Earthquake, "phase": "mid", "msg": "After waiting for hours in your hiding spot, you are feeling extremely hungry.", "item": "con_foods", "damage": 50, "id": "eq_5" },
+	{ "disaster": DisasterType.Earthquake, "phase": "mid", "msg": "Burst pipes flooded the area around you, and the freezing air makes it worse.", "item": "thermal_blanket", "damage": 55, "id": "eq_6" },
+	
+	# Late (Geç Aşama)
+	{ "disaster": DisasterType.Earthquake, "phase": "late", "msg": "You have been waiting for rescue for days, and your throat is painfully dry.", "item": "water", "damage": 65, "id": "eq_7" },
+	{ "disaster": DisasterType.Earthquake, "phase": "late", "msg": "All phone lines and internet are down, so you have no news from the outside world.", "item": "radio", "damage": 50, "id": "eq_8" },
+	{ "disaster": DisasterType.Earthquake, "phase": "late", "msg": "An aftershock started a small fire under the rubble, and sparks are flying around.", "item": "fire_blanket", "damage": 60, "id": "eq_9" },
 
+	# ==========================================
 	# --- SEL (FLOOD) ---
-	{ "disaster": DisasterType.Flood, "phase": "early", "msg": "Su baskını kapıya ulaştı! Eşyalar ıslanıyor.", "item": "flash_light", "damage": 60, "id": "fl_1" },
-	{ "disaster": DisasterType.Flood, "phase": "early", "msg": "Su yükseliyor, ayakların suyun altında kaldı!", "item": "rubber_boots", "damage": 55, "id": "fl_2" },
-	{ "disaster": DisasterType.Flood, "phase": "mid", "msg": "Soğuk suyun içinde kalmaktan vücudun yaralandı!", "item": "med_kit", "damage": 60, "id": "fl_3" },
-	{ "disaster": DisasterType.Flood, "phase": "mid", "msg": "Su seviyesi beline kadar geldi, titremeye başladın!", "item": "thermal_blanket", "damage": 70, "id": "fl_4" },
-	{ "disaster": DisasterType.Flood, "phase": "late", "msg": "Çatıya tıkıldın, hipotermi riski var!", "item": "water", "damage": 60, "id": "fl_5" },
-	{ "disaster": DisasterType.Flood, "phase": "late", "msg": "Kurtarma botlarına sesini duyurmalısın!", "item": "wistel", "damage": 55, "id": "fl_6" },
-
+	# ==========================================
+	# Early (Erken Aşama)
+	{ "disaster": DisasterType.Flood, "phase": "early", "msg": "A sudden flood filled the house with water and cut off all the electricity.", "item": "flash_light", "damage": 45, "id": "fl_1" },
+	{ "disaster": DisasterType.Flood, "phase": "early", "msg": "The muddy water is rising fast and covering the furniture, so you must leave immediately.", "item": "rubber_boots", "damage": 50, "id": "fl_2" },
+	{ "disaster": DisasterType.Flood, "phase": "early", "msg": "Rising water caused a short circuit in the power lines, creating dangerous sparks.", "item": "fire_blanket", "damage": 55, "id": "fl_3" },
+	
+	# Mid (Orta Aşama)
+	{ "disaster": DisasterType.Flood, "phase": "mid", "msg": "You hit a sharp object in the fast current and got injured while drifting.", "item": "med_kit", "damage": 55, "id": "fl_4" },
+	{ "disaster": DisasterType.Flood, "phase": "mid", "msg": "You are stranded on a rooftop in wet clothes, and you are starting to freeze.", "item": "thermal_blanket", "damage": 60, "id": "fl_5" },
+	{ "disaster": DisasterType.Flood, "phase": "mid", "msg": "You have been stuck for a long time, and you need food to keep your strength up.", "item": "con_foods", "damage": 50, "id": "fl_6" },
+	
+	# Late (Geç Aşama)
+	{ "disaster": DisasterType.Flood, "phase": "late", "msg": "The local water supply is polluted, so finding clean drinking water is a big problem.", "item": "water", "damage": 60, "id": "fl_7" },
+	{ "disaster": DisasterType.Flood, "phase": "late", "msg": "You need to wave or make noise to get the attention of the rescue boats.", "item": "wistel", "damage": 55, "id": "fl_8" },
+	{ "disaster": DisasterType.Flood, "phase": "late", "msg": "Surrounded by deep water, you are listening carefully for emergency announcements.", "item": "radio", "damage": 50, "id": "fl_9" },
+	# ==========================================
 	# --- ÇIĞ (AVALANCHE) ---
-	{ "disaster": DisasterType.Avalanche, "phase": "early", "msg": "Şiddetli fırtına ve kar bastırdı!", "item": "flash_light", "damage": 50, "id": "av_1" },
-	{ "disaster": DisasterType.Avalanche, "phase": "early", "msg": "Kar fırtınasında yüzün ve ağzın karla doluyor!", "item": "mask", "damage": 50, "id": "av_2" },
-	{ "disaster": DisasterType.Avalanche, "phase": "mid", "msg": "Vücut ısın hızla düşüyor, donuyorsun!", "item": "thermal_blanket", "damage": 70, "id": "av_3" },
-	{ "disaster": DisasterType.Avalanche, "phase": "mid", "msg": "Donma belirtileri başladı, tıbbi müdahale lazım!", "item": "med_kit", "damage": 65, "id": "av_4" },
-	{ "disaster": DisasterType.Avalanche, "phase": "late", "msg": "Kar kütlesinin altında mahsur kaldın, ses ver!", "item": "wistel", "damage": 70, "id": "av_5" },
-	{ "disaster": DisasterType.Avalanche, "phase": "late", "msg": "Gücün tükeniyor, yardım ekiplerinden haber bekle!", "item": "radio", "damage": 65, "id": "av_6" },
+	# ==========================================
+	# Early (Erken Aşama)
+	{ "disaster": DisasterType.Avalanche, "phase": "early", "msg": "The avalanche triggered a heavy snowstorm, and you can no longer see the path.", "item": "flash_light", "damage": 45, "id": "av_1" },
+	{ "disaster": DisasterType.Avalanche, "phase": "early", "msg": "Freezing winds are blowing snow directly into your face, making it hard to breathe.", "item": "mask", "damage": 50, "id": "av_2" },
+	{ "disaster": DisasterType.Avalanche, "phase": "early", "msg": "Meltwater is leaking into your tent, so you need to stay dry to avoid hypothermia.", "item": "rubber_boots", "damage": 45, "id": "av_3" },
+	
+	# Mid (Orta Aşama)
+	{ "disaster": DisasterType.Avalanche, "phase": "mid", "msg": "The extreme cold and strong winds are dropping your body temperature dangerously low.", "item": "thermal_blanket", "damage": 65, "id": "av_4" },
+	{ "disaster": DisasterType.Avalanche, "phase": "mid", "msg": "Prolonged exposure to the freezing cold has started to damage your fingers and skin.", "item": "med_kit", "damage": 55, "id": "av_5" },
+	{ "disaster": DisasterType.Avalanche, "phase": "mid", "msg": "Stranded in the snow, you need high-calorie food to keep your body warm.", "item": "con_foods", "damage": 50, "id": "av_6" },
+	
+	# Late (Geç Aşama)
+	{ "disaster": DisasterType.Avalanche, "phase": "late", "msg": "You are buried under thick snow, so you must send a signal to show your location.", "item": "wistel", "damage": 65, "id": "av_7" },
+	{ "disaster": DisasterType.Avalanche, "phase": "late", "msg": "You lost contact with your team, so you are trying to listen for weather updates.", "item": "radio", "damage": 55, "id": "av_8" },
+	{ "disaster": DisasterType.Avalanche, "phase": "late", "msg": "You are very thirsty in the frozen cold, so you need to melt snow to drink.", "item": "water", "damage": 60, "id": "av_9" },
 
+	# ==========================================
 	# --- YANGIN (FIRE) ---
-	{ "disaster": DisasterType.Fire, "phase": "early", "msg": "Duman pencerelerden içeri doluyor, boğuluyorsun!", "item": "mask", "damage": 65, "id": "fi_1" },
-	{ "disaster": DisasterType.Fire, "phase": "early", "msg": "Kıvılcımlar üstüne sıçramaya başladı!", "item": "fire_blanket", "damage": 70, "id": "fi_2" },
-	{ "disaster": DisasterType.Fire, "phase": "mid", "msg": "Alevler etrafı sardı, aşırı sıcaklıktan kavruluyorsun!", "item": "water", "damage": 60, "id": "fi_3" },
-	{ "disaster": DisasterType.Fire, "phase": "mid", "msg": "Cildinde ciddi yanıklar oluştu!", "item": "med_kit", "damage": 70, "id": "fi_4" },
-	{ "disaster": DisasterType.Fire, "phase": "late", "msg": "Çıkış yolu alevlerle kapandı, karanlık ve duman basıyor!", "item": "flash_light", "damage": 55, "id": "fi_5" },
-	{ "disaster": DisasterType.Fire, "phase": "late", "msg": "İtfaiye ekiplerine yerini bildirmelisin!", "item": "radio", "damage": 55, "id": "fi_6" }
+	# ==========================================
+	# Early (Erken Aşama)
+	{ "disaster": DisasterType.Fire, "phase": "early", "msg": "Thick toxic smoke has filled the room, making you cough and gasp for air.", "item": "mask", "damage": 55, "id": "fi_1" },
+	{ "disaster": DisasterType.Fire, "phase": "early", "msg": "Flames and flying sparks are spreading quickly towards your personal belongings.", "item": "fire_blanket", "damage": 60, "id": "fi_2" },
+	{ "disaster": DisasterType.Fire, "phase": "early", "msg": "The main fire went out, but thick black smoke makes it impossible to see the exit.", "item": "flash_light", "damage": 45, "id": "fi_3" },
+	
+	# Mid (Orta Aşama)
+	{ "disaster": DisasterType.Fire, "phase": "mid", "msg": "The intense heat and dry smoke are making your throat burn with thirst.", "item": "water", "damage": 60, "id": "fi_4" },
+	{ "disaster": DisasterType.Fire, "phase": "mid", "msg": "You touched a hot surface while escaping and suffered painful burns on your hands.", "item": "med_kit", "damage": 65, "id": "fi_5" },
+	{ "disaster": DisasterType.Fire, "phase": "mid", "msg": "You need to eat something quickly to regain your energy and keep moving.", "item": "con_foods", "damage": 50, "id": "fi_6" },
+	
+	# Late (Geç Aşama)
+	{ "disaster": DisasterType.Fire, "phase": "late", "msg": "The main door is blocked by fire, so you need to yell to guide the rescuers to you.", "item": "wistel", "damage": 60, "id": "fi_7" },
+	{ "disaster": DisasterType.Fire, "phase": "late", "msg": "You are trying to hear the firefighters' instructions through the loud noise.", "item": "radio", "damage": 50, "id": "fi_8" },
+	{ "disaster": DisasterType.Fire, "phase": "late", "msg": "You must protect yourself from extreme heat stroke while escaping the burning building.", "item": "thermal_blanket", "damage": 55, "id": "fi_9" }
 ]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -198,7 +237,6 @@ func upgrade_bag_capasity():
 	bag_slots.resize(max_bag_slot_count)
 	for i in range(old_bag_count, max_bag_slot_count):
 		bag_slots[i] = {}
-	print("Çanta kapasitesi artırıldı! Yeni kapasite:", max_bag_slot_count)
 
 func add_to_bag_slot(cabinet_index: int) -> bool:
 	var item = cabinet_slots[cabinet_index]

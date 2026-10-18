@@ -3,9 +3,6 @@ extends Control
 @onready var backpack_audio_player: AudioStreamPlayer2D = $Backpack
 @onready var siren: AudioStreamPlayer2D = $Alarm
 
-@onready var time_progress_bar: TextureProgressBar = $Time
-var total_time: float = 10.0  # Toplam süre (Örn: 10 saniye hazırlık süresi)
-var current_time: float = 10.0
 
 @onready var slot_points = $SlotPoints.get_children()
 @onready var bag_grid = $BagGrid
