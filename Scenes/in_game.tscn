@@ -1,0 +1,249 @@
+[gd_scene format=3 uid="uid://dptl53u2e6rt5"]
+
+[ext_resource type="Script" uid="uid://bet5h0u18qsoh" path="res://Scripts/LevelScripts/in_game.gd" id="1_ltx6v"]
+[ext_resource type="Texture2D" uid="uid://cllhw8pxashhv" path="res://icon.svg" id="2_ltx6v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ltx6v"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_1e0w3"]
+font_size = 50
+
+[node name="in_game" type="Node2D" unique_id=519035058]
+script = ExtResource("1_ltx6v")
+
+[node name="UI" type="Control" parent="." unique_id=1647317803]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Background" type="TextureRect" parent="UI" unique_id=247360975]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Character" type="Sprite2D" parent="UI" unique_id=1769409201]
+centered = false
+
+[node name="Blur" type="ColorRect" parent="UI" unique_id=464660737]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.17254902, 0.17254902, 0.17254902, 0.7019608)
+
+[node name="HealthBar" type="TextureProgressBar" parent="UI" unique_id=1636493154]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 0
+offset_left = 52.0
+offset_top = 70.0
+offset_right = 202.0
+offset_bottom = 220.0
+value = 100.0
+fill_mode = 5
+texture_progress = ExtResource("2_ltx6v")
+
+[node name="ThirstBar" type="TextureProgressBar" parent="UI" unique_id=849353541]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 0
+offset_left = 1730.0
+offset_top = 78.0
+offset_right = 1880.0
+offset_bottom = 228.0
+value = 100.0
+fill_mode = 5
+texture_progress = ExtResource("2_ltx6v")
+
+[node name="HungerBar" type="TextureProgressBar" parent="UI" unique_id=354999970]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 0
+offset_left = 1533.0
+offset_top = 73.0
+offset_right = 1683.0
+offset_bottom = 223.0
+value = 100.0
+fill_mode = 5
+texture_progress = ExtResource("2_ltx6v")
+
+[node name="TempBar" type="TextureProgressBar" parent="UI" unique_id=322495966]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 0
+offset_left = 1341.0
+offset_top = 70.0
+offset_right = 1491.0
+offset_bottom = 220.0
+value = 100.0
+fill_mode = 5
+texture_progress = ExtResource("2_ltx6v")
+
+[node name="EventLabel" type="Label" parent="UI" unique_id=307200246]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.5
+offset_top = -173.0
+offset_right = 56.5
+offset_bottom = -83.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_ltx6v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SituationLabel" type="Label" parent="UI" unique_id=372985048]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.5
+offset_top = 59.0
+offset_right = 56.5
+offset_bottom = 149.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_ltx6v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BagGrid" type="HBoxContainer" parent="UI" unique_id=380337304]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -106.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="EndGameScreen" type="Control" parent="." unique_id=464024825]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 477.0
+offset_top = 39.0
+offset_right = 1477.0
+offset_bottom = 1039.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="EndGameScreen" unique_id=304206014]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.13682577, 0.13682574, 0.13682571, 0.84705883)
+
+[node name="MarginContainer" type="MarginContainer" parent="EndGameScreen" unique_id=1198837627]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndGameScreen/MarginContainer" unique_id=786550284]
+layout_mode = 2
+theme_override_constants/separation = 97
+
+[node name="Label" type="Label" parent="EndGameScreen/MarginContainer/VBoxContainer" unique_id=2017305940]
+layout_mode = 2
+text = "Title"
+label_settings = SubResource("LabelSettings_1e0w3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="EndGameScreen/MarginContainer/VBoxContainer" unique_id=482323700]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EndGameScreen/MarginContainer/VBoxContainer/MarginContainer" unique_id=1500964652]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EndGameScreen/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=55112181]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="EndGameScreen/MarginContainer/VBoxContainer" unique_id=1204685851]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EndGameScreen/MarginContainer/VBoxContainer/MarginContainer2" unique_id=1264173391]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EndGameScreen/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1911529817]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="EndGameScreen/MarginContainer/VBoxContainer" unique_id=1806173505]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EndGameScreen/MarginContainer/VBoxContainer/MarginContainer3" unique_id=1594331591]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EndGameScreen/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer" unique_id=1697090135]
+layout_mode = 2
+
+[node name="MarginContainer4" type="MarginContainer" parent="EndGameScreen/MarginContainer/VBoxContainer" unique_id=913675509]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EndGameScreen/MarginContainer/VBoxContainer/MarginContainer4" unique_id=488672139]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EndGameScreen/MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer" unique_id=676956387]
+layout_mode = 2
+
+[node name="MarginContainer5" type="MarginContainer" parent="EndGameScreen/MarginContainer/VBoxContainer" unique_id=2113871212]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EndGameScreen/MarginContainer/VBoxContainer/MarginContainer5" unique_id=997879430]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EndGameScreen/MarginContainer/VBoxContainer/MarginContainer5/HBoxContainer" unique_id=768174803]
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="EndGameScreen/MarginContainer/VBoxContainer" unique_id=1321720399]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 37
+text = "Continue"
+
+[node name="EventTimer" type="Timer" parent="." unique_id=624290011]
+wait_time = 15.0
+
+[node name="InGameTime" type="Timer" parent="." unique_id=876660035]
+wait_time = 78.0
+
+[node name="CustomTimer" type="Timer" parent="." unique_id=1337223051]
+
+[node name="SurvivalStatsTimer" type="Timer" parent="." unique_id=1633797444]
+wait_time = 1.6999999999999997
+
+[node name="ItemAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1922164328]
+
+[node name="DisasterAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1267097968]
+
+[connection signal="pressed" from="EndGameScreen/MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]

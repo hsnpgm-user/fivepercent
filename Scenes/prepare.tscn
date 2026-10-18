@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://ciyb1dq5abu1l"]
+
+[ext_resource type="Script" uid="uid://dux7kvjhkm75x" path="res://Scripts/LevelScripts/prepare.gd" id="1_p231s"]
+[ext_resource type="AudioStream" uid="uid://da275thnmyhdy" path="res://Assets/Audio/SFX/backpack1.mp3" id="2_0skrd"]
+[ext_resource type="Texture2D" uid="uid://c8ay72wno8mn1" path="res://Assets/CustomBackgrounds/dolap_bg.png" id="2_p231s"]
+[ext_resource type="AudioStream" uid="uid://d1tyf0n33jolx" path="res://Assets/Audio/SFX/alarm1.mp3" id="3_2kngy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p16ah"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_p231s"]
+font_size = 77
+
+[node name="Prepare" type="Control" unique_id=2002134061]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_p231s")
+
+[node name="Backpack" type="AudioStreamPlayer2D" parent="." unique_id=1064595489]
+stream = ExtResource("2_0skrd")
+
+[node name="Alarm" type="AudioStreamPlayer2D" parent="." unique_id=1524100677]
+stream = ExtResource("3_2kngy")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=123055030]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_p231s")
+
+[node name="PrepareTime" type="Timer" parent="." unique_id=143126219]
+wait_time = 7.0
+
+[node name="Countdown" type="Label" parent="." unique_id=474741670]
+layout_mode = 0
+offset_left = 1706.0
+offset_top = 27.0
+offset_right = 1867.0
+offset_bottom = 220.0
+text = "10"
+label_settings = SubResource("LabelSettings_p16ah")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="." unique_id=1494227353]
+layout_mode = 0
+offset_left = 610.0
+offset_top = 97.0
+offset_right = 1279.0
+offset_bottom = 203.0
+text = "Prepare Scene"
+label_settings = SubResource("LabelSettings_p231s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BagGrid" type="HBoxContainer" parent="." unique_id=974676945]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 463.0
+offset_top = 914.0
+offset_right = 1463.0
+offset_bottom = 1014.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="SlotPoints" type="Node2D" parent="." unique_id=1189314194]
+
+[node name="1" type="Marker2D" parent="SlotPoints" unique_id=1571407046]
+position = Vector2(293, 292)
+
+[node name="2" type="Marker2D" parent="SlotPoints" unique_id=986254691]
+position = Vector2(492, 314)
+
+[node name="3" type="Marker2D" parent="SlotPoints" unique_id=625249147]
+position = Vector2(772, 368)
+
+[node name="4" type="Marker2D" parent="SlotPoints" unique_id=1685811949]
+position = Vector2(942, 367)
+
+[node name="5" type="Marker2D" parent="SlotPoints" unique_id=297843384]
+position = Vector2(1143, 365)
+
+[node name="6" type="Marker2D" parent="SlotPoints" unique_id=353959325]
+position = Vector2(1417, 335)
+
+[node name="7" type="Marker2D" parent="SlotPoints" unique_id=531622883]
+position = Vector2(1588, 306)
+
+[node name="8" type="Marker2D" parent="SlotPoints" unique_id=53859723]
+position = Vector2(286, 478)
+
+[node name="9" type="Marker2D" parent="SlotPoints" unique_id=396864440]
+position = Vector2(487, 484)
+
+[node name="10" type="Marker2D" parent="SlotPoints" unique_id=1766419811]
+position = Vector2(778, 566)
+
+[node name="11" type="Marker2D" parent="SlotPoints" unique_id=1001366813]
+position = Vector2(957, 561)
+
+[node name="12" type="Marker2D" parent="SlotPoints" unique_id=329048698]
+position = Vector2(1162, 559)

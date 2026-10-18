@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://b2oiwur00m8ai"]
+
+[ext_resource type="Script" uid="uid://gvqx3niosr41" path="res://Scripts/LevelScripts/countdown_screen.gd" id="1_n0stl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n0stl"]
+font_size = 90
+
+[sub_resource type="LabelSettings" id="LabelSettings_4cp1u"]
+font_size = 57
+
+[sub_resource type="LabelSettings" id="LabelSettings_ltx6v"]
+font_size = 77
+
+[node name="CountdownScreen" type="Control" unique_id=1474994869]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_n0stl")
+
+[node name="MainCountdown" type="Timer" parent="." unique_id=35980524]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="WaitTime" type="Timer" parent="." unique_id=1078495689]
+wait_time = 0.5
+one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2118487008]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.28118682, 0.28118688, 0.28118682, 1)
+
+[node name="BeforeCountdown" type="Control" parent="." unique_id=830785750]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect2" type="ColorRect" parent="BeforeCountdown" unique_id=949489777]
+layout_mode = 0
+offset_left = 742.0
+offset_top = 332.0
+offset_right = 1142.0
+offset_bottom = 732.0
+color = Color(0.6824024, 0.42804864, 0.24909112, 1)
+
+[node name="TimeOnScreen" type="Label" parent="BeforeCountdown" unique_id=1442912081]
+layout_mode = 0
+offset_left = 819.0
+offset_top = 415.0
+offset_right = 1069.0
+offset_bottom = 665.0
+text = "3"
+label_settings = SubResource("LabelSettings_n0stl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AfterCoundown" type="Control" parent="." unique_id=1885951193]
+visible = false
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="TextureRect" type="TextureRect" parent="AfterCoundown" unique_id=10385069]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+stretch_mode = 3
+
+[node name="DisasterName" type="Label" parent="AfterCoundown" unique_id=112568720]
+layout_mode = 0
+offset_left = 804.0
+offset_top = 916.0
+offset_right = 1088.0
+offset_bottom = 994.0
+text = "Avalanche"
+label_settings = SubResource("LabelSettings_4cp1u")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="." unique_id=987607242]
+layout_mode = 0
+offset_left = 610.0
+offset_top = 97.0
+offset_right = 1279.0
+offset_bottom = 203.0
+text = "Countdown Scene"
+label_settings = SubResource("LabelSettings_ltx6v")
+horizontal_alignment = 1
+vertical_alignment = 1
